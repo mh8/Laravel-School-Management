@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <defs>
+    <style>
+      .cls-1, .cls-3, .cls-4 {
+        fill: #00b8d4;
+      }
+
+      .cls-1 {
+        opacity: 0.1;
+      }
+
+      .cls-2 {
+        fill: #7eddec;
+      }
+
+      .cls-3, .cls-5 {
+        fill-rule: evenodd;
+      }
+
+      .cls-5 {
+        fill: #e5f8fb;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="25" cy="25" r="25"/>
+  <rect id="Rounded_Rectangle_1" data-name="Rounded Rectangle 1" class="cls-2" x="15" y="14" width="19" height="23" rx="5" ry="5"/>
+  <path id="Rounded_Rectangle_3_copy_5" data-name="Rounded Rectangle 3 copy 5" class="cls-3" d="M22.82,28.1l1.051,1.054a0.373,0.373,0,0,1,0,.527L19.667,33.9a0.371,0.371,0,0,1-.526,0L18.09,32.842a0.373,0.373,0,0,1,0-.527l4.2-4.216A0.371,0.371,0,0,1,22.82,28.1Z"/>
+  <path id="Rounded_Rectangle_3_copy_5-2" data-name="Rounded Rectangle 3 copy 5" class="cls-3" d="M19.667,28.1l4.205,4.216a0.373,0.373,0,0,1,0,.527L22.82,33.9a0.371,0.371,0,0,1-.526,0l-4.2-4.216a0.373,0.373,0,0,1,0-.527L19.141,28.1A0.371,0.371,0,0,1,19.667,28.1Z"/>
+  <rect id="Rounded_Rectangle_3_copy_3" data-name="Rounded Rectangle 3 copy 3" class="cls-4" x="26" y="29" width="5" height="2" rx="0.873" ry="0.873"/>
+  <rect id="Rounded_Rectangle_3_copy_4" data-name="Rounded Rectangle 3 copy 4" class="cls-4" x="26" y="32" width="5" height="2" rx="0.873" ry="0.873"/>
+  <path id="Rounded_Rectangle_2" data-name="Rounded Rectangle 2" class="cls-5" d="M18.7,17.011H30.3a1.058,1.058,0,0,1,.71,1.2v3.6a1.058,1.058,0,0,1-.71,1.2H18.7a1.058,1.058,0,0,1-.71-1.2v-3.6A1.058,1.058,0,0,1,18.7,17.011Z"/>
+</svg>
