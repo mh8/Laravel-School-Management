@@ -42,7 +42,7 @@ class StudentClassController extends Controller
     {
         $studentClass = StudentClass::find($id);
         $request->validate([
-            'name' => 'required|unique:student_classes,name,'.$studentClass->id,
+            'name' => 'required|unique:student_classes,name,' . $studentClass->id,
         ]);
         $studentClass->name = $request->name;
         $studentClass->save();
@@ -55,7 +55,7 @@ class StudentClassController extends Controller
         return redirect()->route('student.class.view')->with($notification);
     }
 
-public function StudentClassDelete($id)
+    public function StudentClassDelete($id)
     {
         $studentClass = StudentClass::find($id);
         $studentClass->delete();

@@ -25,9 +25,9 @@ class FeeCategoryController extends Controller
         $feeCategory = new FeeCategory();
         $feeCategory->name = $request->name;
         $feeCategory->save();
-        
+
         $notification = array(
-            'messege' => 'Fee Category Created Successfully',
+            'message' => 'Fee Category Added Successfully',
             'alert-type' => 'success'
         );
         return redirect()->route('fee.category.view')->with($notification);
@@ -46,7 +46,7 @@ class FeeCategoryController extends Controller
         $feeCategory->name = $request->name;
         $feeCategory->save();
         $notification = array(
-            'messege' => 'Fee Category Updated Successfully',
+            'message' => 'Fee Category Updated Successfully',
             'alert-type' => 'success'
         );
         return redirect()->route('fee.category.view')->with($notification);
@@ -56,7 +56,7 @@ class FeeCategoryController extends Controller
         $feeCategory = FeeCategory::find($id);
         $feeCategory->delete();
         $notification = array(
-            'messege' => 'Fee Category Deleted Successfully',
+            'message' => 'Fee Category Deleted Successfully',
             'alert-type' => 'success'
         );
         return redirect()->route('fee.category.view')->with($notification);

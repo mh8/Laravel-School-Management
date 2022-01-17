@@ -44,6 +44,7 @@
                         <li><a href="{{ route('student.group.view') }}">Student Group</a></li>
                         <li><a href="{{ route('student.shift.view') }}">Student Shift</a></li>
                         <li><a href="{{ route('fee.category.view') }}">Fee Category</a></li>
+                        <li><a href="{{ route('fee.amount.view') }}">Fee Category Amount</a></li>
                     </ul>
                 </li>
                 <li>
@@ -65,7 +66,7 @@
                         <li><a href="{{url('/apps-onboarding-screens')}}">Onboarding Screens</a></li>
                     </ul>
                 </li>
-               
+
             </ul>
         </div>
         <!-- End Navigationbar -->
