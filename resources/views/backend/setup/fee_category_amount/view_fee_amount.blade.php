@@ -11,6 +11,7 @@ Fee Amount
 @endsection
 @section('rightbar-content')
 <!-- Start Contentbar -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -28,23 +29,21 @@ Fee Amount
                             <thead>
                                 <tr>
                                     <th>Sl</th>
-                                    <th>Fee A Name</th>
+                                    <th>Fee Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($fee_category_amounts as $key => $feeAmount)
+                                @foreach($fee_category_amounts as $key => $fee_category_amount)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $feeAmount->fee_category_id }}</td>
+                                    <td>{{ $fee_category_amount['fee_category']['name'] }}</td>
                                     <td style="white-space: nowrap; width: 15%;">
                                         <div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
                                             <div class="btn-group btn-group-sm" style="float: none;">
+                                            <a href="{{ route('fee.amount.edit', $fee_category_amount->fee_category_id) }}" style="float: none; margin: 5px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
 
-                                                <a href="{{ route('fee.amount.edit', $feeCategory->id) }}" style="float: none; margin: 5px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
-
-                                                <a href="{{ route('fee.amount.delete', $feeCategory->id) }}" class="tabledit-delete-button btn btn-sm btn-danger" style="margin: 5px; float: none;" id="delete"><span class="ti-trash"></span></a>
-
+                                                <a href="{{ route('fee.amount.delete', $fee_category_amount->fee_category_id) }}" class="tabledit-delete-button btn btn-sm btn-danger" style="margin: 5px; float: none;" id="delete"><span class="ti-trash"></span></a>
                                             </div>
                                     </td>
                                 </tr>
