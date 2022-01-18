@@ -1,5 +1,5 @@
 @section('title')
-Fee Amount
+Assign Subject List
 @endsection
 @extends('backend.layouts.master')
 @section('style')
@@ -11,7 +11,6 @@ Fee Amount
 @endsection
 @section('rightbar-content')
 <!-- Start Contentbar -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -19,8 +18,8 @@ Fee Amount
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h4 class="card-title">Fee Amount List</h4>
-                    <a href="{{ route('fee.amount.create') }}" class="btn btn-primary" style="float: right;">Add Fee Amount</a>
+                    <h5 class="card-title">Assign Subject List</h5>
+                    <a href="{{ route('assign.subject.create') }}" class="btn btn-primary" style="float: right;">Add Assign Subject</a>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle"></h6>
@@ -29,24 +28,19 @@ Fee Amount
                             <thead>
                                 <tr>
                                     <th>Sl</th>
-                                    <th>Fee Name</th>
+                                    <th>Class Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($fee_category_amounts as $key => $fee_category_amount)
-                                <tr>
+                                @foreach($assign_subjects as $key => $assign)
+                                <tr style="background-color: white;">
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $fee_category_amount['fee_category']['name'] }}</td>
+                                    <td>{{ $assign->class_id }}</td>
                                     <td style="white-space: nowrap; width: 15%;">
-                                        <div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
-                                            <div class="btn-group btn-group-sm" style="float: none;">
-                                                <a href="{{ route('fee.amount.edit', $fee_category_amount->fee_category_id) }}" style="float: none; margin: 5px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
+                                        <a href="" style="float: none; margin: 5px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
 
-                                                <a href="{{ route('fee.amount.details', $fee_category_amount->fee_category_id) }}" style="float: none; margin: 5px;" class="tabledit-delete-button btn btn-sm btn-dark"><span></span><i class="dripicons-document"></i></a>
-
-                                                <a href="{{ route('fee.amount.delete', $fee_category_amount->fee_category_id) }}" class="tabledit-delete-button btn btn-sm btn-danger" style="margin: 5px; float: none;" id="delete"><span class="ti-trash"></span></a>
-                                            </div>
+                                        <a href="" class="tabledit-delete-button btn btn-sm btn-danger" style="margin: 5px; float: none;" id="delete"><span class="ti-trash"></span></a>
                                     </td>
                                 </tr>
                                 @endforeach

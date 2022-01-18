@@ -1,5 +1,5 @@
 @section('title')
-Fee Amount
+Fee Amount Details
 @endsection
 @extends('backend.layouts.master')
 @section('style')
@@ -19,7 +19,7 @@ Fee Amount
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h4 class="card-title">Fee Amount List</h4>
+                    <h3 class="card-title"><strong>Fee Category: </strong>{{ $alldata[0]['fee_category']['name'] }}</h3>
                     <a href="{{ route('fee.amount.create') }}" class="btn btn-primary" style="float: right;">Add Fee Amount</a>
                 </div>
                 <div class="card-body">
@@ -29,25 +29,16 @@ Fee Amount
                             <thead>
                                 <tr>
                                     <th>Sl</th>
-                                    <th>Fee Name</th>
-                                    <th>Action</th>
+                                    <th>Class Name</th>
+                                    <th>Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($fee_category_amounts as $key => $fee_category_amount)
-                                <tr>
+                                @foreach($alldata as $key => $detail)
+                                <tr style="background-color: white;">
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $fee_category_amount['fee_category']['name'] }}</td>
-                                    <td style="white-space: nowrap; width: 15%;">
-                                        <div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
-                                            <div class="btn-group btn-group-sm" style="float: none;">
-                                                <a href="{{ route('fee.amount.edit', $fee_category_amount->fee_category_id) }}" style="float: none; margin: 5px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
-
-                                                <a href="{{ route('fee.amount.details', $fee_category_amount->fee_category_id) }}" style="float: none; margin: 5px;" class="tabledit-delete-button btn btn-sm btn-dark"><span></span><i class="dripicons-document"></i></a>
-
-                                                <a href="{{ route('fee.amount.delete', $fee_category_amount->fee_category_id) }}" class="tabledit-delete-button btn btn-sm btn-danger" style="margin: 5px; float: none;" id="delete"><span class="ti-trash"></span></a>
-                                            </div>
-                                    </td>
+                                    <td>{{ $detail['class']['name'] }}</td>
+                                    <td>{{ $detail->amount }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

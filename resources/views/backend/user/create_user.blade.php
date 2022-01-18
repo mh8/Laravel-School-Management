@@ -25,19 +25,29 @@ Create User
                             <div class="col-lg-6">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
                             </div>
+                            @error('name')
+                            <span class="text-danger">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="email">Email <span class="text-danger">*</span></label>
                             <div class="col-lg-6">
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email ID">
                             </div>
+                            @error('email')
+                            <span class="text-danger">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="password">Password <span class="text-danger">*</span></label>
                             <div class="col-lg-6">
                                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Enter Password">
                                 @error('password')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
@@ -58,6 +68,11 @@ Create User
                                     <option value="User">User</option>
                                 </select>
                             </div>
+                            @error('usertype')
+                            <span class="text-danger">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label"></label>
@@ -76,9 +91,4 @@ Create User
 <!-- End Contentbar -->
 @endsection
 @section('script')
-<!-- Parsley js -->
-<!-- <script src="{{ asset('assets/plugins/validatejs/validate.min.js') }}"></script> -->
-<!-- Validate js -->
-<!-- <script src="{{ asset('assets/js/custom/custom-validate.js') }}"></script> -->
-<!-- <script src="{{ asset('assets/js/custom/custom-form-validation.js') }}"></script> -->
 @endsection

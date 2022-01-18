@@ -26,8 +26,8 @@ class FeeCategoryAmountController extends Controller
     public function StoreFeeAmount(Request $request)
     {
         $countClass = count($request->class_id);
-        if($countClass !=NULL){
-            for($i=0; $i<$countClass; $i++){
+        if ($countClass != NULL) {
+            for ($i = 0; $i < $countClass; $i++) {
                 $fee_category_amount = new FeeCategoryAmount();
                 $fee_category_amount->fee_category_id = $request->fee_category_id;
                 $fee_category_amount->class_id = $request->class_id[$i];
@@ -48,23 +48,37 @@ class FeeCategoryAmountController extends Controller
         $data['fee_categories'] = FeeCategory::all();
         return view('backend.setup.fee_category_amount.edit_fee_amount', $data);
     }
-    public function UpdateFeeAmount(Request $request, $id)
+    public function UpdateFeeAmount(Request $request, $fee_category_id)
     {
-        $countClass = count($request->class_id);
-        if($countClass !=NULL){
-            for($i=0; $i<$countClass; $i++){
-                $fee_category_amount = FeeCategoryAmount::find($id);
+        if ($request->class_id == NULL) {
+            $notification = array(
+                'message' => 'No Class Amount Selected',
+                'alert-type' => 'danger'
+            );
+            return redirect()->route('fee.amount.edit', $fee_category_id)->with($notification);
+        } else {
+            $countClass = count($request->class_id);
+            FeeCategoryAmount::where('fee_category_id', $fee_category_id)->delete();
+            for ($i = 0; $i < $countClass; $i++) {
+                $fee_category_amount = new FeeCategoryAmount;
                 $fee_category_amount->fee_category_id = $request->fee_category_id;
                 $fee_category_amount->class_id = $request->class_id[$i];
                 $fee_category_amount->amount = $request->amount[$i];
                 $fee_category_amount->save();
             }
+            $notification = array(
+                'message' => 'Fee Amount Updated Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('fee.amount.view')->with($notification);
         }
-        $notification = array(
-            'message' => 'Fee Amount Updated Successfully',
-            'alert-type' => 'success'
-        );
-        return redirect()->route('fee.amount.view')->with($notification);
+    }
+    public function DetailsFeeAmount($fee_category_id)
+    {
+        $data['alldata'] = FeeCategoryAmount::where('fee_category_id', $fee_category_id)->orderBy('class_id', 'asc')->get();
+        $data['classes'] = StudentClass::all();
+        $data['fee_categories'] = FeeCategory::all();
+        return view('backend.setup.fee_category_amount.details_fee_amount', $data);
     }
     public function DeleteFeeAmount($id)
     {

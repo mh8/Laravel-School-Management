@@ -6,7 +6,7 @@ Edit Fee Amount
 
 @endsection
 @section('rightbar-content')
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
@@ -19,7 +19,7 @@ Edit Fee Amount
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle"></h6>
-                    <form class="form-validate" action="{{ route('fee.amount.store') }}" method="post">
+                    <form class="form-validate" action="{{ route('fee.amount.update', $alldata[0]->fee_category_id) }}" method="post">
                         @csrf
                         <div class="" id="add_item">
                             <div class="form-group row">
@@ -38,37 +38,37 @@ Edit Fee Amount
                             </div>
                             @foreach($alldata as $data)
                             <div class="delete_whole_extra_item_add" id="delete_whole_extra_item_add">
-                            <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="fee_amount">Class <span class="text-danger">*</span></label>
-                                <div class="col-lg-6">
-                                    <select class="form-control" id="class_id" name="class_id[]">
-                                        <option value="">Select Class</option>
-                                        @foreach($classes as $class)
-                                        <option value="{{ $class->id }}" {{ ($data->class_id == $class->id) ? "selected" : "" }}>{{ $class->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('class_id')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="fee_amount">Class <span class="text-danger">*</span></label>
+                                    <div class="col-lg-6">
+                                        <select class="form-control" id="class_id" name="class_id[]">
+                                            <option value="">Select Class</option>
+                                            @foreach($classes as $class)
+                                            <option value="{{ $class->id }}" {{ ($data->class_id == $class->id) ? "selected" : "" }}>{{ $class->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('class_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="amount">Fee Amount <span class="text-danger">*</span></label>
-                                <div class="col-lg-6">
-                                    <input type="text" class="form-control" id="amount" name="amount[]" value="{{ $data->amount }}" placeholder="Enter Fee Amount">
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="amount">Fee Amount <span class="text-danger">*</span></label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="amount" name="amount[]" value="{{ $data->amount }}" placeholder="Enter Fee Amount">
 
+                                    </div>
+                                    <span class="btn btn-success addeventmore p-1"><i class="fa fa-plus"></i></span>
+                                    <span class="btn btn-danger removeeventmore p-1"><i class="fa fa-close"></i></span>
                                 </div>
-                                <span class="btn btn-success addeventmore p-1"><i class="fa fa-plus"></i></span>
-                                <span class="btn btn-danger removeeventmore p-1"><i class="fa fa-close"></i></span>
                             </div>
-                        </div>
-                        @endforeach
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label"></label>
-                            <div class="col-lg-8">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            @endforeach
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label"></label>
+                                <div class="col-lg-8">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>

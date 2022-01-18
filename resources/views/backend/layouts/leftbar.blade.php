@@ -45,6 +45,9 @@
                         <li><a href="{{ route('student.shift.view') }}">Student Shift</a></li>
                         <li><a href="{{ route('fee.category.view') }}">Fee Category</a></li>
                         <li><a href="{{ route('fee.amount.view') }}">Fee Category Amount</a></li>
+                        <li><a href="{{ route('exam.type.view') }}">Exam Type</a></li>
+                        <li><a href="{{ route('subject.view') }}">Subject</a></li>
+                        <li><a href="{{ route('assign.subject.view') }}">Assign Subject</a></li>
                     </ul>
                 </li>
                 <li>
