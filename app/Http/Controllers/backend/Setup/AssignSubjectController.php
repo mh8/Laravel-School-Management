@@ -23,11 +23,6 @@ class AssignSubjectController extends Controller
     }
     public function AssignSubjectStore(Request $request)
     {
-        
-        $request->validate([
-            'class_id' => 'required',
-            'subject_id' => 'required',
-        ]);
         $subject_count = count($request->subject_id);
         if($subject_count != NULL){
             for($i=0; $i<$subject_count; $i++){

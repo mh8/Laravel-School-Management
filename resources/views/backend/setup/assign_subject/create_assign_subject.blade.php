@@ -61,8 +61,10 @@ Add Assign Subject
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
