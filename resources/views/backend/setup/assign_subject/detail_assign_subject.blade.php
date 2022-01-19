@@ -1,5 +1,5 @@
 @section('title')
-Assign Subject List
+Detailed Subject
 @endsection
 @extends('backend.layouts.master')
 @section('style')
@@ -18,31 +18,30 @@ Assign Subject List
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Assign Subject List</h5>
+                    <h5 class="card-title"><strong>Assign Subject: </strong>{{ $detailData[0]['class']['name'] }}</h5>
                     <a href="{{ route('assign.subject.create') }}" class="btn btn-primary" style="float: right;">Add Assign Subject</a>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle"></h6>
                     <div class="table-responsive">
-                        <table id="datatable-buttons" class="table table-hover table-dark table-bordered ">
+                        <table id="datatable-buttons" class="table table-striped table-bordered">
                             <thead class="thead-dark">
                                 <tr>
                                     <th width="5%">Sl</th>
-                                    <th>Class Name</th>
-                                    <th>Action</th>
+                                    <th width="20%">Subject</th>
+                                    <th width="20%">Full Mark</th>
+                                    <th width="20%">Pass Mark</th>
+                                    <th width="20%">Subjective Mark</th>
                                 </tr>
                             </thead>
-                            <tbody class="">
-                                @foreach($assign_subjects as $key => $assign)
+                            <tbody>
+                                @foreach($detailData as $key => $detail)
                                 <tr style="background-color: white;">
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $assign['class']['name'] }}</td>
-                                    <td style="white-space: nowrap; width: 15%;">
-                                        <a href="{{ route('assign.subject.edit', $assign->class_id ) }}" style="float: none; margin: 5px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
-                                        <a href="{{ route('assign.subject.details', $assign->class_id) }}" style="float: none; margin: 5px;" class="tabledit-delete-button btn btn-sm btn-dark"><span></span><i class="dripicons-document"></i></a>
-
-                                        <a href="" class="tabledit-delete-button btn btn-sm btn-danger" style="margin: 5px; float: none;" id="delete"><span class="ti-trash"></span></a>
-                                    </td>
+                                    <td>{{ $detail['subject']['name'] }}</td>
+                                    <td>{{ $detail->full_mark }}</td>
+                                    <td>{{ $detail->pass_mark }}</td>
+                                    <td>{{ $detail->subjective_mark }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

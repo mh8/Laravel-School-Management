@@ -1,5 +1,5 @@
 @section('title')
-Assign Subject List
+Designation List
 @endsection
 @extends('backend.layouts.master')
 @section('style')
@@ -18,8 +18,8 @@ Assign Subject List
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Assign Subject List</h5>
-                    <a href="{{ route('assign.subject.create') }}" class="btn btn-primary" style="float: right;">Add Assign Subject</a>
+                    <h5 class="card-title">Designation List</h5>
+                    <a href="{{ route('designation.create') }}" class="btn btn-primary" style="float: right;">Add Designation</a>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle"></h6>
@@ -28,18 +28,17 @@ Assign Subject List
                             <thead class="thead-dark">
                                 <tr>
                                     <th width="5%">Sl</th>
-                                    <th>Class Name</th>
+                                    <th>Designation</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="">
-                                @foreach($assign_subjects as $key => $assign)
-                                <tr style="background-color: white;">
+                                @foreach($designations as $key => $designation)
+                                <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $assign['class']['name'] }}</td>
+                                    <td>{{ $designation->name }}</td>
                                     <td style="white-space: nowrap; width: 15%;">
-                                        <a href="{{ route('assign.subject.edit', $assign->class_id ) }}" style="float: none; margin: 5px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
-                                        <a href="{{ route('assign.subject.details', $assign->class_id) }}" style="float: none; margin: 5px;" class="tabledit-delete-button btn btn-sm btn-dark"><span></span><i class="dripicons-document"></i></a>
+                                        <a href="{{ route('designation.edit', $designation->id ) }}" style="float: none; margin: 5px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
 
                                         <a href="" class="tabledit-delete-button btn btn-sm btn-danger" style="margin: 5px; float: none;" id="delete"><span class="ti-trash"></span></a>
                                     </td>

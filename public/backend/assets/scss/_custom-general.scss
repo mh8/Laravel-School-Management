@@ -1,4 +1,4 @@
-/* 
+/*
 --------------------------------
     : Custom - General css :
 --------------------------------
@@ -7,7 +7,7 @@ html {
   position: relative;
   min-height: 100%;
 }
-body {  
+body {
   font-family: $font-primary;
   margin: 0;
   background: $bg-body;
@@ -21,22 +21,22 @@ body {
     color: $heading-color;
 }
 h1 {
-  font-size: 38px; 
+  font-size: 38px;
 }
 h2 {
-  font-size: 30px; 
+  font-size: 30px;
 }
 h3 {
-  font-size: 26px; 
+  font-size: 26px;
 }
 h4 {
-  font-size: 22px; 
+  font-size: 22px;
 }
 h5 {
-  font-size: 18px; 
+  font-size: 18px;
 }
 h6 {
-  font-size: 15px; 
+  font-size: 15px;
 }
 b {
   font-weight: 700;
@@ -90,7 +90,7 @@ code {
   }
 }
 .leftbar {
-  width: 250px;
+  width: 260px;
   height: 100%;
   position: fixed;
   background: $leftbar-bg;
@@ -134,11 +134,11 @@ code {
   width: 0;
 }
 ::-webkit-scrollbar-track {
-  background: transparent; 
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: transparent; 
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: transparent; 
+  background: transparent;
 }

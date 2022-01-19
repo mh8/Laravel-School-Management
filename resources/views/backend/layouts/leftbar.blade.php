@@ -35,7 +35,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="javaScript:void();">
                         <img src="{{ asset('backend/assets/images/svg-icon/logout.svg') }}" alt=""><span>Setup Management</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
@@ -48,25 +48,15 @@
                         <li><a href="{{ route('exam.type.view') }}">Exam Type</a></li>
                         <li><a href="{{ route('subject.view') }}">Subject</a></li>
                         <li><a href="{{ route('assign.subject.view') }}">Assign Subject</a></li>
+                        <li><a href="{{ route('designation.view') }}">Designation</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="javaScript:void();">
-                      <img src="{{ asset('backend/assets/images/svg-icon/apps.svg') }}" class="img-fluid" alt="apps"><span>Apps</span><i class="feather icon-chevron-right pull-right"></i>
+                      <img src="{{ asset('backend/assets/images/svg-icon/apps.svg') }}" class="img-fluid" alt="apps"><span>Student Management</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
-                        <li><a href="{{url('/apps-calender')}}">Calender</a></li>
-                        <li><a href="{{url('/apps-chat')}}">Chat</a></li>
-                        <li>
-                            <a href="javaScript:void();">Email<i class="feather icon-chevron-right pull-right"></i></a>
-                            <ul class="vertical-submenu">
-                                <li><a href="{{url('/apps-email-inbox')}}">Inbox</a></li>
-                                <li><a href="{{url('/apps-email-open')}}">Open</a></li>
-                                <li><a href="{{url('/apps-email-compose')}}">Compose</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{{url('/apps-kanban-board')}}">Kanban Board</a></li>
-                        <li><a href="{{url('/apps-onboarding-screens')}}">Onboarding Screens</a></li>
+                        <li><a href="{{url('/apps-calender')}}">Student Registration</a></li>
                     </ul>
                 </li>
 

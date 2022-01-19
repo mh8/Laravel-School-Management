@@ -18,9 +18,10 @@ Add Assign Subject
                 </div>
                 <div class="card-body">
                     <form action="{{ route('assign.subject.store') }}" method="POST">
+                        @csrf
                         <div class="add_item" id="add_item">
                             <div class="form-group">
-                                <label class="" for="fee_amount">Class <span class="text-danger">*</span></label>
+                                <label for="class_id">Class <span class="text-danger">*</span></label>
                                 <select class="form-control" id="class_id" name="class_id">
                                     <option value="">Select Class</option>
                                     @foreach($classes as $class)
