@@ -16,6 +16,7 @@
                       <img src="{{ asset('backend/assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Dashboard</span>
                     </a>
                 </li>
+                @if(Auth::user()->role == 'Admin')
                 <li>
                     <a href="javaScript:void();">
                       <img src="{{ asset('backend/assets/images/svg-icon/user.svg') }}" class="img-fluid" alt="user"><span>User</span><i class="feather icon-chevron-right pull-right"></i>
@@ -25,6 +26,7 @@
                         <li><a href="{{ route('user.create') }}">User Add</a></li>
                     </ul>
                 </li>
+                @endif
                 <li>
                     <a href="javaScript:void();">
                         <img src="{{ asset('backend/assets/images/svg-icon/advanced.svg') }}" alt=""><span>Manage Profile</span><i class="feather icon-chevron-right pull-right"></i>
@@ -56,7 +58,7 @@
                       <img src="{{ asset('backend/assets/images/svg-icon/apps.svg') }}" class="img-fluid" alt="apps"><span>Student Management</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
-                        <li><a href="{{url('/apps-calender')}}">Student Registration</a></li>
+                        <li><a href="{{route('student.registration.view')}}">Student Registration</a></li>
                     </ul>
                 </li>
 

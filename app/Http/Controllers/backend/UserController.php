@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function UserView()
     {
-        $users = User::all();
+        $users = User::where('usertype', 'Admin')->get();
         return view('backend.user.view_user', compact('users'));
     }
 
@@ -21,18 +21,19 @@ class UserController extends Controller
 
     public function UserStore(Request $request)
     {
-        $request->validate([
+        $validate = $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:user,email',
-            'password' => 'required|confirmed',
-            'usertype' => 'required',
+            'email' => 'required|email|unique:users,email',
         ]);
 
         $user = new User();
-        $user->usertype = $request->usertype;
+        $code = rand(0000,9999);
+        $user->usertype = 'Admin';
+        $user->role = $request->role;
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+        $user->password = bcrypt($code);
+        $user->code = $code;
 
         $user->save();
 
@@ -52,16 +53,10 @@ class UserController extends Controller
 
     public function UserUpdate(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'usertype' => 'required',
-        ]);
-
         $user = User::find($id);
-        $user->usertype = $request->usertype;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->role = $request->role;
         // $user->password = bcrypt($request->password);
 
         $user->save();

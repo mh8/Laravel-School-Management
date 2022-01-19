@@ -34,7 +34,7 @@ Create User
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="email">Email <span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email ID">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email Address">
                             </div>
                             @error('email')
                             <span class="text-danger">
@@ -43,32 +43,15 @@ Create User
                             @enderror
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="password">Password <span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="role">Role <span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Enter Password">
-                                @error('password')
-                                <span class="text-danger">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="confirm-password">Re-Type Password <span class="text-danger">*</span></label>
-                            <div class="col-lg-6">
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="" name="password_confirmation" placeholder="Enter again passward for confirm">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="usertype">Role <span class="text-danger">*</span></label>
-                            <div class="col-lg-6">
-                                <select class="form-control" id="usertype" name="usertype">
+                                <select class="form-control" id="role" name="role">
                                     <option value="">Please select</option>
                                     <option value="Admin">Admin</option>
-                                    <option value="User">User</option>
+                                    <option value="Operator">Operator</option>
                                 </select>
                             </div>
-                            @error('usertype')
+                            @error('role')
                             <span class="text-danger">
                                 <strong>{{ $message }}</strong>
                             </span>

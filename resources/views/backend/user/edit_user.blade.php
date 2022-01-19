@@ -59,18 +59,18 @@ Update User
                                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="" name="password_confirmation" placeholder="Enter again passward for confirm">
                             </div>
                             @error('password_confirmation')
-                                <span class="invalid-feedback text-danger">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                            <span class="invalid-feedback text-danger">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="usertype">Role <span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="role">Role <span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <select class="form-control" id="usertype" name="usertype">
+                                <select class="form-control" id="role" name="role">
                                     <option value="">Please select</option>
-                                    <option value="Admin" {{ ($user->usertype == 'Admin' ? 'selected':'') }}>Admin</option>
-                                    <option value="User" {{ ($user->usertype == 'User' ? 'selected':'') }}>User</option>
+                                    <option value="Admin" {{ ($user->role == 'Admin' ? 'selected':'') }}>Admin</option>
+                                    <option value="Operator" {{ ($user->role == 'Operator' ? 'selected':'') }}>Operator </option>
                                 </select>
                             </div>
                         </div>

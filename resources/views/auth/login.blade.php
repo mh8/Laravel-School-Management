@@ -47,9 +47,19 @@
                                         <h4 class="text-primary my-4">Log in !</h4>
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="email" placeholder="Enter Email here" type="email" name="email" :value="old('email')" required autofocus>
+                                            @error('email')
+                                            <span class="text-danger">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <input id="password" type="password" class="form-control" id="password" placeholder="Enter Password here" name="password" required autocomplete="current-password">
+                                            @error('password')
+                                            <span class="text-danger">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="form-row mb-3">
                                             <div class="col-sm-6">

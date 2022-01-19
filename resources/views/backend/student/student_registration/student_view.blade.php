@@ -1,5 +1,5 @@
 @section('title')
-User
+Student List
 @endsection
 @extends('backend.layouts.master')
 @section('style')
@@ -18,51 +18,36 @@ User
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">User List</h5>
-                    <a href="{{ route('user.create') }}" class="btn btn-primary" style="float: right;">Add User</a>
-
+                    <h5 class="card-title">Student List</h5>
+                    <a href="{{ route('student.registration.create') }}" class="btn btn-primary" style="float: right;">Add Student</a>
                 </div>
                 <div class="card-body">
+                    <h6 class="card-subtitle"></h6>
                     <div class="table-responsive">
-                        <table id="default-datatable" class="display table table-dark table-bordered">
-                            <thead>
+                        <table id="datatable-buttons" class="table table-hover table-dark table-bordered ">
+                            <thead class="thead-dark">
                                 <tr>
                                     <th width="5%">Sl</th>
-                                    <th>Role</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Code</th>
-                                    <th width="10%">Action</th>
+                                    <th>Student Name</th>
+                                    <th>ID</th>
+                                    <th width="20%">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach($users as $key => $user)
-                                <tr>
+                            <tbody class="">
+                                @foreach($students as $key => $value)
+                                <tr style="background-color: white;">
                                     <td>{{ $key+1 }}</td>
-                                    <td>
-                                    @if($user->role == 'Admin')
-                                    <span class="badge badge-pill badge-primary">{{ $user->role }}</span>
-                                    @elseif($user->role == 'Operator')
-                                    <span class="badge badge-pill badge-success">{{ $user->role }}</span>
-                                    @endif
-                                    </td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->code }}</td>
-                                    <td style="white-space: nowrap; width: 10%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
-                                           <div class="btn-group btn-group-sm" style="float: none;">
+                                    <td>{{ $value->class_id }}</td>
+                                    <td>{{ $value->year_id }}</td>
+                                    <td style="white-space: nowrap; width: 15%;">
+                                        <a href="" style="float: none; margin: 5px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
+                                        <a href="" style="float: none; margin: 5px;" class="tabledit-delete-button btn btn-sm btn-dark"><span></span><i class="dripicons-document"></i></a>
 
-                                           <a href="{{ route('user.edit', $user->id) }}" style="float: none; margin: 5px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
-
-                                           <a href="{{ route('user.delete', $user->id) }}" class="tabledit-delete-button btn btn-sm btn-danger" style="margin: 5px; float: none;" id="delete"><span class="ti-trash"></span></a>
-
-                                       </div>
+                                        <a href="" class="tabledit-delete-button btn btn-sm btn-danger" style="margin: 5px; float: none;" id="delete"><span class="ti-trash"></span></a>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
