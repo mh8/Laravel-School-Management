@@ -17,8 +17,14 @@ class StudentRegistrationController extends Controller
 {
     public function StudentRegistrationView()
     {
-        $students = AssignStudent::all();
-        return view('backend.student.student_registration.student_view', compact('students'));
+        $students['years'] = StudentYear::all();
+        $students['classes'] = StudentClass::all();
+
+        $students['year_id'] = StudentYear::orderBy('id', 'desc')->first()->id;
+        $students['class_id'] = StudentClass::orderBy('id', 'desc')->first()->id;
+        // dd($students);
+        $students['students'] = AssignStudent::where('year_id', $students['year_id'])->where('class_id', $students['class_id'])->get();
+        return view('backend.student.student_registration.student_view', $students);
     }
     public function StudentRegistrationCreate()
     {
@@ -78,6 +84,7 @@ class StudentRegistrationController extends Controller
                 $file = $request->file('image');
                 $fileName = date('YmdHi').$file->getClientOriginalName();
                 $file->move(public_path('uploads/student_images'), $fileName);
+                $user->image = $fileName;
             }
             $user->save();
 
@@ -100,5 +107,23 @@ class StudentRegistrationController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('student.registration.view')->with($notification);
+    }
+    public function StudentYearClassWise(Request $request)
+    {
+        $students['years'] = StudentYear::all();
+        $students['classes'] = StudentClass::all();
+        $students['year_id'] = $request->year_id;
+        $students['class_id'] = $request->class_id;
+        $students['students'] = AssignStudent::where('year_id', $request->year_id)->where('class_id', $request->class_id)->get();
+        return view('backend.student.student_registration.student_view', $students);
+    }
+    public function StudentRegistrationEdit($student_id)
+    {
+        $students['years'] = StudentYear::all();
+        $students['classes'] = StudentClass::all();
+        $students['groups'] = StudentGroup::all();
+        $students['shifts'] = StudentShift::all();
+        $students['editData'] = AssignStudent::with('student')->where('student_id',$student_id)->first();
+        return view('backend.student.student_registration.student_edit', $students);
     }
 }

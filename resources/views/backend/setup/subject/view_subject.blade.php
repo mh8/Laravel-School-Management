@@ -24,17 +24,17 @@ Subject List
                 <div class="card-body">
                     <h6 class="card-subtitle"></h6>
                     <div class="table-responsive">
-                        <table id="datatable-buttons" class="table table-striped table-bordered">
+                        <table id="datatable-buttons" class="table table-dark table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Sl</th>
+                                    <th width="10%">Sl</th>
                                     <th>Subject Name</th>
-                                    <th>Action</th>
+                                    <th width="15%">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($subjects as $key => $subject)
-                                <tr style="background-color: white;">
+                                <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $subject->name }}</td>
                                     <td style="white-space: nowrap; width: 15%;">

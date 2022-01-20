@@ -122,7 +122,7 @@ Add Student
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="class"><strong>Profile Picture</strong> <span class="text-danger">*</span></label>
-                                <input type="file" class="filepond" name="image" id="image" onchange="preview()">
+                                <input type="file" class="form-control" name="image" id="image" onchange="preview()">
                             </div>
                             <div class="form-group col-md-4">
                                 <img src="{{ (!empty($user->image))? url('uploads/user_images/'.$user->image) : url('uploads/no_image.jpg') }}" alt="user-img" style="width: 300px;" id="showImage">
