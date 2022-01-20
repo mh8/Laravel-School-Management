@@ -38,7 +38,7 @@
                 </li>
                 <li>
                     <a href="javaScript:void();">
-                        <img src="{{ asset('backend/assets/images/svg-icon/logout.svg') }}" alt=""><span>Setup Management</span><i class="feather icon-chevron-right pull-right"></i>
+                        <img src="{{ asset('backend/assets/images/svg-icon/components.svg') }}" alt=""><span>Setup Management</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{ route('student.class.view') }}">Student Class</a></li>
@@ -55,7 +55,7 @@
                 </li>
                 <li>
                     <a href="javaScript:void();">
-                      <img src="{{ asset('backend/assets/images/svg-icon/apps.svg') }}" class="img-fluid" alt="apps"><span>Student Management</span><i class="feather icon-chevron-right pull-right"></i>
+                      <img src="{{ asset('backend/assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="apps"><span>Student Management</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{route('student.registration.view')}}">Student Registration</a></li>

@@ -27,10 +27,10 @@ Edit Profile
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="usertype">Role <span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <select class="form-control" id="usertype" name="usertype">
+                                <select class="form-control" id="role" name="role">
                                     <option value="">Please select</option>
-                                    <option value="Admin" {{ ($user->usertype == 'Admin' ? 'selected':'') }}>Admin</option>
-                                    <option value="User" {{ ($user->usertype == 'User' ? 'selected':'') }}>User</option>
+                                    <option value="Admin" {{ ($user->role == 'Admin' ? 'selected':'') }}>Admin</option>
+                                    <option value="User" {{ ($user->role == 'Operator' ? 'selected':'') }}>User</option>
                                 </select>
                             </div>
                         </div>
@@ -97,12 +97,12 @@ Edit Profile
                             <label class="col-lg-3 col-form-label" for="image">Profile Picture <span class="text-danger"></span></label>
                             <div class="col-lg-6">
                                 <input type="file" name="image" class="form-control-file" id="image" onchange="preview()">
-                            </div> 
+                            </div>
                         </div>
                         <div class="form-group row">
                         <label class="col-lg-3 col-form-label"></label>
                             <div class="col-lg-6">
-                                
+
                                 <img id="showImage" src="{{ (!empty($user->image))? url('uploads/user_images/'.$user->image) : url('uploads/no_image.jpg') }}" alt="user-img" style="width: 100px; height:100px">
                                 </div>
                             </div>
