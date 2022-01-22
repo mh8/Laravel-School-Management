@@ -121,6 +121,12 @@ Add Student
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
+                                <label for="roll"><strong>Roll</strong> <span class="text-danger">*</span></label>
+                                <input type="text" name="roll" class="form-control" id="roll" placeholder="Enter Roll">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
                                 <label for="class"><strong>Profile Picture</strong> <span class="text-danger">*</span></label>
                                 <input type="file" class="form-control" name="image" id="image" onchange="preview()">
                             </div>
@@ -142,8 +148,8 @@ Add Student
 <!-- End Contentbar -->
 <script>
     function preview() {
-    showImage.src=URL.createObjectURL(event.target.files[0]);
-}
+        showImage.src = URL.createObjectURL(event.target.files[0]);
+    }
 </script>
 @endsection
 @section('script')

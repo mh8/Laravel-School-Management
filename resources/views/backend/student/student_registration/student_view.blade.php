@@ -56,13 +56,13 @@ Student List
             <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="card-title">Student List</h5>
-                    <a href="{{ route('student.registration.create') }}" class="btn btn-primary" style="float: right;">Add Student</a>
+                    <a href="{{ route('student.registration.create') }}" class="btn btn-success" style="float: right;"><i class="feather icon-plus mr-2"></i> Add Student</a>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle"></h6>
                     <div class="table-responsive">
                         @if(!@search)
-                        <table id="datatable-buttons" class="table table-hover table-dark table-bordered ">
+                        <table id="datatable-buttons" class="table table-dark table-bordered">
                             <thead class="thead-dark">
                                 <tr>
                                     <th width="5%">Sl</th>
@@ -76,27 +76,27 @@ Student List
                                     @if(Auth::user()->role == 'Admin')
                                     <th>Code</th>
                                     @endif
-                                    <th width="8%">Action</th>
+                                    <th >Action</th>
                                 </tr>
                             </thead>
                             <tbody class="">
                                 @foreach($students as $key => $value)
-                                <tr style="background-color: white;">
+                                <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $value['student']['name'] }}</td>
                                     <td>{{ $value['student']['id_no'] }}</td>
-                                    <td>{{ $value['student']['roll'] }}</td>
+                                    <td>{{ $value['roll'] }}</td>
                                     <td>{{ $value['student_class']['name'] }}</td>
                                     <td>{{ $value['student_shift']['shift_name'] }}</td>
                                     <td>{{ $value['student_year']['year'] }}</td>
                                     <td>
                                         <img src="{{ (!empty($value['student']['image']))? url('uploads/student_images/'.$value['student']['image']) : url('uploads/no_image.jpg') }}" alt="user-img" style="width: 50px;" id="showImage">
                                     </td>
-                                    <td></td>
+                                    <td>{{ $value['student']['code'] }}</td>
                                     <td style="white-space: nowrap;">
-                                        <a href="{{ route('student.registration.edit', $value->student_id) }}" style="float: none; margin: 1px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
-                                        <a href="" style="float: none; margin: 1px;" class="tabledit-delete-button btn btn-sm btn-dark"><span></span><i class="dripicons-document"></i></a>
-                                        <a href="" class="tabledit-delete-button btn btn-sm btn-danger" style="margin: 1px; float: none;" id="delete"><span class="ti-trash"></span></a>
+                                        <a href="{{ route('student.registration.edit', $value->student_id) }}" style="float: none; margin: 1px;" class="tabledit-edit-button btn btn-info"><span class="ti-pencil"></span></a>
+                                        <a href="" style="float: none;" class="tabledit-delete-button btn btn-primary"><span></span><i class="dripicons-document"></i></a>
+                                        <a href="" class="tabledit-delete-button btn btn-danger" style="margin: 1px; float: none;" id="delete"><span class="ti-trash"></span></a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -117,27 +117,28 @@ Student List
                                     @if(Auth::user()->role == 'Admin')
                                     <th>Code</th>
                                     @endif
-                                    <th width="8%">Action</th>
+                                    <th >Action</th>
                                 </tr>
                             </thead>
                             <tbody class="">
                                 @foreach($students as $key => $value)
-                                <tr style="background-color: white;">
+                                <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $value['student']['name'] }}</td>
                                     <td>{{ $value['student']['id_no'] }}</td>
-                                    <td>{{ $value['student']['roll'] }}</td>
+                                    <td>{{ $value['roll'] }}</td>
                                     <td>{{ $value['student_class']['name'] }}</td>
                                     <td>{{ $value['student_shift']['shift_name'] }}</td>
                                     <td>{{ $value['student_year']['year'] }}</td>
                                     <td>
                                         <img src="{{ (!empty($value['student']['image']))? url('uploads/student_images/'.$value['student']['image']) : url('uploads/no_image.jpg') }}" alt="user-img" style="width: 50px;" id="showImage">
                                     </td>
-                                    <td></td>
+                                    <td>{{ $value['student']['code'] }}</td>
                                     <td style="white-space: nowrap;">
-                                        <a href="{{ route('student.registration.edit', $value->student_id) }}" style="float: none; margin: 1px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
-                                        <a href="" style="float: none; margin: 1px;" class="tabledit-delete-button btn btn-sm btn-dark"><span></span><i class="dripicons-document"></i></a>
-                                        <a href="" class="tabledit-delete-button btn btn-sm btn-danger" style="margin: 1px; float: none;" id="delete"><span class="ti-trash"></span></a>
+                                        <a href="{{ route('student.registration.edit', $value->student_id) }}" style="float: none; margin: 1px;" class="tabledit-edit-button btn btn-warning"><span class="ti-pencil"></span></a>
+
+                                        <a href="" style="float: none;" class="tabledit-delete-button btn btn-primary"><span></span><i class="dripicons-document"></i></a>
+                                        <a href="" class="tabledit-delete-button btn btn-danger" style="margin: 1px; float: none;" id="delete"><span class="ti-trash"></span></a>
                                     </td>
                                 </tr>
                                 @endforeach
