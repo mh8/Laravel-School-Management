@@ -1,5 +1,5 @@
 @section('title')
-Add Student
+Student Promotion
 @endsection
 @extends('backend.layouts.master')
 @section('style')
@@ -17,10 +17,10 @@ Add Student
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Edit Student</h5>
+                    <h5 class="card-title">Promote Student</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('student.registration.update', $editData->student_id ) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('student.registration.promotion.update', $editData->student_id ) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="{{ $editData->id}}">
                         <div class="form-row">
@@ -137,7 +137,7 @@ Add Student
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-warning"><i class="feather icon-upload mr-2"></i> Update</button>
+                            <button type="submit" class="btn btn-success"><i class="feather icon-user-check mr-2"></i></i><Strong>Promote</Strong></button>
                         </div>
 
                     </form>

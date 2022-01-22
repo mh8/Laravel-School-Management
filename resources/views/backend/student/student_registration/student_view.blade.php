@@ -76,7 +76,7 @@ Student List
                                     @if(Auth::user()->role == 'Admin')
                                     <th>Code</th>
                                     @endif
-                                    <th >Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="">
@@ -95,8 +95,12 @@ Student List
                                     <td>{{ $value['student']['code'] }}</td>
                                     <td style="white-space: nowrap;">
                                         <a href="{{ route('student.registration.edit', $value->student_id) }}" style="float: none; margin: 1px;" class="tabledit-edit-button btn btn-info"><span class="ti-pencil"></span></a>
-                                        <a href="" style="float: none;" class="tabledit-delete-button btn btn-primary"><span></span><i class="dripicons-document"></i></a>
-                                        <a href="" class="tabledit-delete-button btn btn-danger" style="margin: 1px; float: none;" id="delete"><span class="ti-trash"></span></a>
+
+                                        <a href="{{ route('student.registration.promotion', $value->student_id) }}" style="float: none;" class="btn btn-primary"><i class="la la-check"></i></a>
+
+                                        <a href="" style="float: none;" class="btn btn-info"><i class="la la-eye"></i></a>
+
+                                        <a href="{{ route('student.registration.delete', $value->student_id) }}" class="tabledit-delete-button btn btn-danger" style="margin: 1px; float: none;" id="delete"><span class="ti-trash"></span></a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -106,7 +110,7 @@ Student List
                         <table id="datatable-buttons" class="table table-hover table-dark table-bordered ">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th width="5%">Sl</th>
+                                    <th width="3%">Sl</th>
                                     <th>Student Name</th>
                                     <th>ID No</th>
                                     <th>Roll</th>
@@ -117,7 +121,7 @@ Student List
                                     @if(Auth::user()->role == 'Admin')
                                     <th>Code</th>
                                     @endif
-                                    <th >Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="">
@@ -135,10 +139,14 @@ Student List
                                     </td>
                                     <td>{{ $value['student']['code'] }}</td>
                                     <td style="white-space: nowrap;">
-                                        <a href="{{ route('student.registration.edit', $value->student_id) }}" style="float: none; margin: 1px;" class="tabledit-edit-button btn btn-warning"><span class="ti-pencil"></span></a>
+                                        <a href="{{ route('student.registration.edit', $value->student_id) }}" style="float: none;" class="btn btn-warning"><i class="feather icon-edit"></i></a>
 
-                                        <a href="" style="float: none;" class="tabledit-delete-button btn btn-primary"><span></span><i class="dripicons-document"></i></a>
-                                        <a href="" class="tabledit-delete-button btn btn-danger" style="margin: 1px; float: none;" id="delete"><span class="ti-trash"></span></a>
+                                        <a href="{{ route('student.registration.promotion', $value->student_id) }}" style="float: none;" class="btn btn-primary"><i class="feather icon-check"></i></a>
+
+                                        <a href="" style="float: none;" class="btn btn-info"><i class="feather icon-eye"></i></a>
+
+
+                                        <a href="{{ route('student.registration.delete', $value->student_id) }}" class="btn btn-danger" style="float: none;" id="delete"><i class="feather icon-trash-2"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

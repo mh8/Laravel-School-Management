@@ -136,6 +136,8 @@ Route::prefix('student')->group(function(){
     Route::post('registration/update/{student_id}', [StudentRegistrationController::class, 'StudentRegistrationUpdate'])->name('student.registration.update');
     Route::get('registration/delete/{student_id}', [StudentRegistrationController::class, 'StudentRegistrationDelete'])->name('student.registration.delete');
     Route::get('year/class/wise',[StudentRegistrationController::class, 'StudentYearClassWise'])->name('student.year.class.wise');
+    Route::get('registration/promotion/{student_id}', [StudentRegistrationController::class, 'StudentRegistrationPromotionView'])->name('student.registration.promotion');
+    Route::post('registration/promotion/update/{student_id}', [StudentRegistrationController::class, 'StudentRegistrationPromotionUpdate'])->name('student.registration.promotion.update');
 
 });
 
