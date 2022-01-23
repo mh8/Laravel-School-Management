@@ -98,7 +98,7 @@ Student List
 
                                         <a href="{{ route('student.registration.promotion', $value->student_id) }}" style="float: none;" class="btn btn-primary"><i class="la la-check"></i></a>
 
-                                        <a href="" style="float: none;" class="btn btn-info"><i class="la la-eye"></i></a>
+                                        <a target="_blank" title="Details" href="{{ route('student.registration.promotion.details', $value->student_id) }}" style="float: none;" class="btn btn-info"><i class="feather icon-eye"></i></a>
 
                                         <a href="{{ route('student.registration.delete', $value->student_id) }}" class="tabledit-delete-button btn btn-danger" style="margin: 1px; float: none;" id="delete"><span class="ti-trash"></span></a>
                                     </td>
@@ -143,7 +143,7 @@ Student List
 
                                         <a href="{{ route('student.registration.promotion', $value->student_id) }}" style="float: none;" class="btn btn-primary"><i class="feather icon-check"></i></a>
 
-                                        <a href="" style="float: none;" class="btn btn-info"><i class="feather icon-eye"></i></a>
+                                        <a target="_blank" title="Details" href="{{ route('student.registration.promotion.details', $value->student_id) }}" style="float: none;" class="btn btn-info"><i class="feather icon-eye"></i></a>
 
 
                                         <a href="{{ route('student.registration.delete', $value->student_id) }}" class="btn btn-danger" style="float: none;" id="delete"><i class="feather icon-trash-2"></i></a>

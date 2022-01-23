@@ -12,7 +12,7 @@ use App\Models\StudentYear;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use niklasravnsborg\LaravelPdf\Facades\Pdf;
 class StudentRegistrationController extends Controller
 {
     // Student View
@@ -254,5 +254,13 @@ class StudentRegistrationController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('student.registration.view')->with($notification);
+    }
+    public function StudentRegistrationDetails($student_id)
+    {
+        $data['student'] = AssignStudent::with(['student', 'discount'])->where('student_id',$student_id)->first();
+
+        $pdf = PDF::loadView('backend.student.student_registration.student_details_pdf', $data);
+        $pdf->setProtection(['copy', 'print'], '', 'pass');
+        return $pdf->stream('document.pdf');
     }
 }
