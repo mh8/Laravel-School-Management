@@ -12,6 +12,7 @@ use App\Http\Controllers\backend\Setup\StudentClassController;
 use App\Http\Controllers\backend\Setup\StudentGroupController;
 use App\Http\Controllers\backend\Setup\StudentShiftController;
 use App\Http\Controllers\backend\Setup\StudentYearController;
+use App\Http\Controllers\backend\Student\RegistrationFeeController;
 use App\Http\Controllers\backend\Student\StudentRegistrationController;
 use App\Http\Controllers\backend\UserController;
 use Illuminate\Support\Facades\Route;
@@ -139,6 +140,11 @@ Route::prefix('student')->group(function(){
     Route::get('registration/promotion/{student_id}', [StudentRegistrationController::class, 'StudentRegistrationPromotionView'])->name('student.registration.promotion');
     Route::post('registration/promotion/update/{student_id}', [StudentRegistrationController::class, 'StudentRegistrationPromotionUpdate'])->name('student.registration.promotion.update');
     Route::get('registration/promotion/details/{student_id}', [StudentRegistrationController::class, 'StudentRegistrationDetails'])->name('student.registration.promotion.details');
+
+    // Registration Fee Routes
+    Route::get('registration/fee/view', [RegistrationFeeController::class, 'StudentRegistrationFeeView'])->name('student.registration.fee.view');
+    Route::get('registration/fee/classwise', [RegistrationFeeController::class, 'RegistrationFeeClasswise'])->name('registration.fee.classise');
+    Route::get('registration/fee/payslip', [RegistrationFeeController::class, 'RegistrationFeePayslip'])->name('registration.fee.payslip');
 
 });
 
