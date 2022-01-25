@@ -8,8 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class StudentYear extends Model
 {
     use HasFactory;
-    public function assign_student()
-    {
-        return $this->hasMany(AssignStudent::class, 'class_id', 'id');
-    }
 }

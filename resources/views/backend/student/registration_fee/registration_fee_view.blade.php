@@ -3,13 +3,8 @@ Student List
 @endsection
 @extends('backend.layouts.master')
 @section('style')
-<!-- DataTables css -->
-<link href="{{ asset('backend/assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('backend/assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-<!-- Responsive Datatable css -->
-<link href="{{ asset('backend/assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 
 @endsection
 @section('rightbar-content')
@@ -49,13 +44,37 @@ Student List
                             </div>
                         </div>
                     </form>
+                    <br>
+                    <div class="">
+                        <div id="DocumentResults">
+                            <script id="document-template" type="text/x-handlebars-template">
+
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        @{{{thsource}}}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{{#each this}}
+                                    <tr>
+                                    @{{{tdsource}}}
+                                    </tr>
+                                    @{{/each}}
+                                </tbody>
+                            </table>
+                            </script>
+                        </div>
+                    </div>
                 </div>
 
             </div>
+
         </div>
-        <!-- End col -->
-        <!-- Start col -->
-        <div class="col-lg-12">
+    </div>
+    <!-- End col -->
+    <!-- Start col -->
+    <!-- <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="card-title">Student List</h5>
@@ -64,58 +83,54 @@ Student List
                     <h6 class="card-subtitle"></h6>
                     <div class="DocumentResults">
                         <script id="document-template" type="text/x-handlebars-template">
-                            <div class="table-responsive">
-                                <table class="table table-dark table-bordered">
+                            <table class="table table-dark table-bordered">
                                     <thead class="thead-dark">
                                         <tr>
-                                            @{{thsource}}
+                                            @{{{thsource}}}
                                         </tr>
                                     </thead>
-                                    <tbody class="">
+                                    <tbody>
                                         @{{#each this}}
                                         <tr>
-                                            @{{tdsource}}
+                                            @{{{tdsource}}}
                                         </tr>
                                         @{{/each}}
                                     </tbody>
                                 </table>
-                            </div>
                         </script>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- End col -->
-    </div>
-    <!-- End row -->
+        </div> -->
+    <!-- End col -->
+</div>
+<!-- End row -->
 </div>
 <!-- End Contentbar -->
 <script>
-    $(document).on('click','#search',function(){
+    $(document).on('click', '#search', function() {
         var year_id = $('#year_id').val();
         var class_id = $('#class_id').val();
 
         $.ajax({
-            url:"{{ route('registration.fee.classise') }}",
-            type:'get',
-            data:{'year_id':year_id, 'class_id':class_id},
-            beforeSend: function(){
+            url: "{{ route('registration.fee.classwise') }}",
+            type: 'get',
+            data: {
+                'year_id': year_id,
+                'class_id': class_id
             },
-            success: function(data){
+            beforeSend: function() {},
+            success: function(data) {
                 var source = $("#document-template").html();
                 var template = Handlebars.compile(source);
                 var html = template(data);
                 $('#DocumentResults').html(html);
-                $('[data-toggle = "tooltip"]').tooltip();
+                $('[data-toggle="tooltip"]').tooltip();
             }
         });
     });
 </script>
-@endsection
-@section('script')
-<!-- Datatable js -->
+<script>
 
-<!-- Tabledit js -->
-
-
+</script>
 @endsection

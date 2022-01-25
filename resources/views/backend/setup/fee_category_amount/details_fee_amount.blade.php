@@ -37,7 +37,7 @@ Fee Amount Details
                                 @foreach($alldata as $key => $detail)
                                 <tr style="background-color: white;">
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $detail['class']['name'] }}</td>
+                                    <td>{{ $detail['student_class']['name'] }}</td>
                                     <td>{{ $detail->amount }}</td>
                                 </tr>
                                 @endforeach

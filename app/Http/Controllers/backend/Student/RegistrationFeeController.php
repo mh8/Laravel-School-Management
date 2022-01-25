@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class RegistrationFeeController extends Controller
 {
-    public function StudentRegistrationFeeView()
+    public function RegistrationFeeView()
     {
         $data['years'] = StudentYear::all();
         $data['classes'] = StudentClass::all();
@@ -31,29 +31,34 @@ class RegistrationFeeController extends Controller
         {
             $where[] = ['class_id', 'like', $class_id.'%'];
         }
+
         $allStudent = AssignStudent::with(['discount'])->where($where)->get();
-        dd($allStudent);
+        // dd($allStudent);
 
         $html['thsource'] = '<th>Sl</th>';
-        $html['thsource'] = '<th>ID No</th>';
-        $html['thsource'] = '<th>Name</th>';
-        $html['thsource'] = '<th>Roll</th>';
-        $html['thsource'] = '<th>Discount</th>';
-        $html['thsource'] = '<th>Fee</th>';
-        $html['thsource'] = '<th>Action</th>';
+        $html['thsource'] .= '<th>ID No</th>';
+        $html['thsource'] .= '<th>Name</th>';
+        $html['thsource'] .= '<th>Roll</th>';
+        $html['thsource'] .= '<th>Fee</th>';
+        $html['thsource'] .= '<th>Discount</th>';
+        $html['thsource'] .= '<th>Student Fee </th>';
+        $html['thsource'] .= '<th>Action</th>';
 
         foreach($allStudent as $key => $v)
         {
             $registration_fee = FeeCategoryAmount::where('fee_category_id', 1)->where('class_id', $v->class_id)->first();
+            // dd($registration_fee);
+            
             $colour = 'success';
 
             $html[$key]['tdsource'] = '<td>'.($key+1).'</td>';
             $html[$key]['tdsource'] .= '<td>'.$v['student']['id_no'].'</td>';
             $html[$key]['tdsource'] .= '<td>'.$v['student']['name'].'</td>';
             $html[$key]['tdsource'] .= '<td>'.$v->roll.'</td>';
-            $html[$key]['tdsource'] .= '<td>'.$registration_fee->amount.'</td>';
-            $html[$key]['tdsource'] .= '<td>'.$v['student']['name'].'</td>';
+            $html[$key]['tdsource'] .= '<td>'.$registration_fee['amount'].'</td>';
+            
             $html[$key]['tdsource'] .= '<td>'.$v['discount']['discount'].'%'.'</td>';
+            // dd($registration_fee->amount);
 
             $originalFee = $registration_fee->amount;
             $discount = $v['discount']['discount'];
@@ -62,11 +67,11 @@ class RegistrationFeeController extends Controller
 
             $html[$key]['tdsource'] .= '<td>'.$totalFee.'</td>';
             $html[$key]['tdsource'] .= '<td>';
-            $html[$key]['tdsource'] .= '<a class="btn btn-'.$colour.'" title="PaySlip" target="_blank" href="'.route("student.registration.fee.payslip").'?class_id='.$v->classs_id.'&student_id='.$v->student_id.'" >Fee Slip</a>';
+            $html[$key]['tdsource'] .= '<a class="btn btn-'.$colour.'" title="PaySlip" target="_blank" href="'.route("registration.fee.payslip").'?class_id='.$v->classs_id.'&student_id='.$v->student_id.'" >Fee Slip</a>';
             $html[$key]['tdsource'] .= '<td>';
         };
 
-        return response()->json(@html);
+        return response()->json(@$html);
 
     }
     public function RegistrationFeePayslip()
