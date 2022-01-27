@@ -1,5 +1,5 @@
 @section('title')
-Student Monthly Fee List
+Student Exam Fee List
 @endsection
 @extends('backend.layouts.master')
 @section('style')
@@ -24,7 +24,7 @@ Student Monthly Fee List
                             <div class="form-group col-md-3">
                                 <label for="year_id">Year</label>
                                 <select id="year_id" name="year_id" class="form-control">
-                                    <option selected="">Choose...</option>
+                                    <option selected disabled>Choose...</option>
                                     @foreach ($years as $year)
                                     <option value="{{ $year->id }}" {{ (@$year_id == $year->id) ? "selected" : "" }}>{{ $year->year }}</option>
                                     @endforeach
@@ -33,28 +33,19 @@ Student Monthly Fee List
                             <div class="form-group col-md-3">
                                 <label for="class_id">Class</label>
                                 <select id="class_id" name="class_id" class="form-control">
-                                    <option selected="">Choose...</option>
+                                    <option selected disabled>Choose...</option>
                                     @foreach ($classes as $class)
                                     <option value="{{ $class->id }}" {{(@$class_id == $class->id) ? "selected" : "" }}>{{ $class->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="month">Class</label>
-                                <select id="month" name="month" class="form-control">
-                                    <option selected="">Choose...</option>
-                                    <option value="January">January</option>
-                                    <option value="February">February</option>
-                                    <option value="March">March</option>
-                                    <option value="April">April</option>
-                                    <option value="May">May</option>
-                                    <option value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="August">August</option>
-                                    <option value="September">September</option>
-                                    <option value="October">October</option>
-                                    <option value="November">November</option>
-                                    <option value="December">December</option>
+                                <label for="exam_id">Exam</label>
+                                <select id="exam_id" name="exam_id" class="form-control">
+                                    <option selected disabled>Choose...</option>
+                                    @foreach ($exam_type as $exam)
+                                    <option value="{{ $exam->id }}">{{ $exam->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
@@ -67,7 +58,7 @@ Student Monthly Fee List
                         <div id="DocumentResults">
                             <script id="document-template" type="text/x-handlebars-template">
 
-                            <table class="table table-bordered table-striped">
+                                <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         @{{{thsource}}}
@@ -91,36 +82,6 @@ Student Monthly Fee List
         </div>
     </div>
     <!-- End col -->
-    <!-- Start col -->
-    <!-- <div class="col-lg-12">
-            <div class="card m-b-30">
-                <div class="card-header">
-                    <h5 class="card-title">Student List</h5>
-                </div>
-                <div class="card-body">
-                    <h6 class="card-subtitle"></h6>
-                    <div class="DocumentResults">
-                        <script id="document-template" type="text/x-handlebars-template">
-                            <table class="table table-dark table-bordered">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            @{{{thsource}}}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @{{#each this}}
-                                        <tr>
-                                            @{{{tdsource}}}
-                                        </tr>
-                                        @{{/each}}
-                                    </tbody>
-                                </table>
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    <!-- End col -->
 </div>
 <!-- End row -->
 </div>
@@ -129,15 +90,15 @@ Student Monthly Fee List
     $(document).on('click', '#search', function() {
         var year_id = $('#year_id').val();
         var class_id = $('#class_id').val();
-        var month = $('#month').val();
+        var exam_id = $('#exam_id').val();
 
         $.ajax({
-            url: "{{ route('monthly.fee.classwise') }}",
+            url: "{{ route('exam.fee.classwise') }}",
             type: 'get',
             data: {
                 'year_id': year_id,
                 'class_id': class_id,
-                'month': month,
+                'exam_id': exam_id,
             },
             beforeSend: function() {},
             success: function(data) {

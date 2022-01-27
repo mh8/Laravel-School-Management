@@ -1,4 +1,3 @@
-
 <div class="leftbar">
     <!-- Start Sidebar -->
     <div class="sidebar">
@@ -13,13 +12,13 @@
             <ul class="vertical-menu">
                 <li class="">
                     <a href="{{route('dashboard')}}">
-                      <img src="{{ asset('backend/assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Dashboard</span>
+                        <img src="{{ asset('backend/assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Dashboard</span>
                     </a>
                 </li>
                 @if(Auth::user()->role == 'Admin')
                 <li>
                     <a href="javaScript:void();">
-                      <img src="{{ asset('backend/assets/images/svg-icon/user.svg') }}" class="img-fluid" alt="user"><span>User</span><i class="feather icon-chevron-right pull-right"></i>
+                        <img src="{{ asset('backend/assets/images/svg-icon/user.svg') }}" class="img-fluid" alt="user"><span>User</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{ route('user.view') }}">User List</a></li>
@@ -55,12 +54,21 @@
                 </li>
                 <li>
                     <a href="javaScript:void();">
-                      <img src="{{ asset('backend/assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="apps"><span>Student Management</span><i class="feather icon-chevron-right pull-right"></i>
+                        <img src="{{ asset('backend/assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="apps"><span>Student Management</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{route('student.registration.view')}}">Student Registration</a></li>
-                        <li><a href="{{route('student.registration.fee.view')}}">Registration Fee</a></li>
-                        <li><a href="{{route('student.monthly.fee.view')}}">Monthly Fee</a></li>
+                        <li><a href="{{route('registration.fee.view')}}">Registration Fee</a></li>
+                        <li><a href="{{route('monthly.fee.view')}}">Monthly Fee</a></li>
+                        <li><a href="{{route('exam.fee.view') }}">Exam Fee</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javaScript:void();">
+                        <img src="{{ asset('backend/assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="apps"><span>Employee Management</span><i class="feather icon-chevron-right pull-right"></i>
+                    </a>
+                    <ul class="vertical-submenu">
+                        <li><a href="{{route('employee.registration.view')}}">Employee Registration</a></li>
                     </ul>
                 </li>
 

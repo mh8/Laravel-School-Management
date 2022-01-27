@@ -33,7 +33,7 @@ Student Registration Fee List
                             <div class="form-group col-md-4">
                                 <label for="class_id">Class</label>
                                 <select id="class_id" name="class_id" class="form-control">
-                                    <option selected="">Choose...</option>
+                                    <option selected disabled>Choose...</option>
                                     @foreach ($classes as $class)
                                     <option value="{{ $class->id }}" {{(@$class_id == $class->id) ? "selected" : "" }}>{{ $class->name }}</option>
                                     @endforeach

@@ -4,45 +4,44 @@ namespace App\Http\Controllers\backend\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\AssignStudent;
+use App\Models\ExamType;
 use App\Models\FeeCategoryAmount;
 use App\Models\StudentClass;
 use App\Models\StudentYear;
 use Illuminate\Http\Request;
 use niklasravnsborg\LaravelPdf\Facades\Pdf;
 
-class MonthlyFeeController extends Controller
+class ExamFeeController extends Controller
 {
-    public function MonthlyFeeView()
+    public function ExamFeeView()
     {
         $data['years'] = StudentYear::all();
         $data['classes'] = StudentClass::all();
-        return view('backend.student.monthly_fee.monthly_fee_view', $data);
+        $data['exam_type'] = ExamType::all();
+        return view('backend.student.exam_fee.exam_fee_view', $data);
     }
-
-    public function MonthlyFeeClasswise(Request $request)
+    public function ExamFeeClasswise(Request $request)
     {
         $year_id = $request->year_id;
         $class_id = $request->class_id;
-        if($year_id != '')
-        {
-            $where[] = ['year_id', 'like', $year_id.'%'];
+        if ($year_id != '') {
+            $where[] = ['year_id', 'like', $year_id . '%'];
         }
-        if($class_id != '')
-        {
-            $where[] = ['class_id', 'like', $class_id.'%'];
+        if ($class_id != '') {
+            $where[] = ['class_id', 'like', $class_id . '%'];
         }
         $allStudent = AssignStudent::with(['discount'])->where($where)->get();
         $html['thsource'] = '<th>Sl</th>';
         $html['thsource'] .= '<th>ID No</th>';
         $html['thsource'] .= '<th>Name</th>';
         $html['thsource'] .= '<th>Roll</th>';
-        $html['thsource'] .= '<th>Monthly Fee</th>';
+        $html['thsource'] .= '<th>Exam Fee</th>';
         $html['thsource'] .= '<th>Discount</th>';
         $html['thsource'] .= '<th>Student Fee </th>';
         $html['thsource'] .= '<th>Action</th>';
 
         foreach ($allStudent as $key => $v) {
-            $registration_fee = FeeCategoryAmount::where('fee_category_id', 2)->where('class_id', $v->class_id)->first();
+            $registration_fee = FeeCategoryAmount::where('fee_category_id', 3)->where('class_id', $v->class_id)->first();
             $colour = 'success';
 
             $html[$key]['tdsource'] = '<td>' . ($key + 1) . '</td>';
@@ -59,23 +58,21 @@ class MonthlyFeeController extends Controller
 
             $html[$key]['tdsource'] .= '<td>' . $totalFee . '</td>';
             $html[$key]['tdsource'] .= '<td>';
-            $html[$key]['tdsource'] .= '<a class="btn btn-' . $colour . '" title="PaySlip" target="_blank" href="' . route("monthly.fee.payslip") . '?class_id=' . $v->class_id . '&student_id=' . $v->student_id . '&month='.$request->month.'" >Fee Slip</a>';
+            $html[$key]['tdsource'] .= '<a class="btn btn-' . $colour . '" title="PaySlip" target="_blank" href="' . route("exam.fee.payslip") . '?class_id=' . $v->class_id . '&student_id=' . $v->student_id . '&exam_id=' . $request->exam_id . '" >Fee Slip</a>';
             $html[$key]['tdsource'] .= '<td>';
         };
-
         return response()->json(@$html);
     }
-    public function MonthlyFeePayslip(Request $request)
+    public function ExamFeePayslip(Request $request)
     {
         $class_id = $request->class_id;
         $student_id = $request->student_id;
-        $month = $request->month;
-        $data['month'] = $month;
+        $exam = $request->exam_id;
+        $data['exam'] = ExamType::find($exam)['name'];
         $data['details'] = AssignStudent::with(['student', 'discount'])->where('class_id', $class_id)->where('student_id', $student_id)->first();
 
-        $pdf = PDF::loadView('backend.student.monthly_fee.monthly_fee_payslip', $data);
-        $pdf->setProtection(['copy', 'print'],'','pass');
-        return $pdf->stream('monthly_fee_payslip.pdf');
+        $pdf = PDF::loadView('backend.student.exam_fee.exam_fee_payslip', $data);
+        $pdf->setProtection(['copy', 'print'], '', 'pass');
+        return $pdf->stream('exam_fee_payslip.pdf');
     }
-
 }
