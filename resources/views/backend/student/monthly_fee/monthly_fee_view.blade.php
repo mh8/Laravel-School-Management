@@ -1,5 +1,5 @@
 @section('title')
-Student Registration Fee List
+Student Monthly Fee List
 @endsection
 @extends('backend.layouts.master')
 @section('style')
@@ -21,7 +21,7 @@ Student Registration Fee List
                 <div class="card-body">
                     <form method="GET" action="{{ route('student.year.class.wise') }}">
                         <div class="form-row">
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label for="year_id">Year</label>
                                 <select id="year_id" name="year_id" class="form-control">
                                     <option selected="">Choose...</option>
@@ -30,7 +30,7 @@ Student Registration Fee List
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label for="class_id">Class</label>
                                 <select id="class_id" name="class_id" class="form-control">
                                     <option selected="">Choose...</option>
@@ -39,7 +39,25 @@ Student Registration Fee List
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
+                                <label for="month">Class</label>
+                                <select id="month" name="month" class="form-control">
+                                    <option selected="">Choose...</option>
+                                    <option value="January">January</option>
+                                    <option value="February">February</option>
+                                    <option value="March">March</option>
+                                    <option value="April">April</option>
+                                    <option value="April">May</May>
+                                    <option value="June">June</option>
+                                    <option value="July">July</option>
+                                    <option value="August">August</option>
+                                    <option value="September">September</option>
+                                    <option value="October">October</option>
+                                    <option value="November">November</option>
+                                    <option value="December">December</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
                                 <a id="search" name="search" class="btn btn-rounded btn-outline-info mt-3 ml-5 p-3">Search</a>
                             </div>
                         </div>
@@ -111,13 +129,15 @@ Student Registration Fee List
     $(document).on('click', '#search', function() {
         var year_id = $('#year_id').val();
         var class_id = $('#class_id').val();
+        var month = $('#month').val();
 
         $.ajax({
             url: "{{ route('registration.fee.classwise') }}",
             type: 'get',
             data: {
                 'year_id': year_id,
-                'class_id': class_id
+                'class_id': class_id,
+                'month': month
             },
             beforeSend: function() {},
             success: function(data) {

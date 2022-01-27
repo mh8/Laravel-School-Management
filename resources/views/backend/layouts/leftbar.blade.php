@@ -60,6 +60,7 @@
                     <ul class="vertical-submenu">
                         <li><a href="{{route('student.registration.view')}}">Student Registration</a></li>
                         <li><a href="{{route('student.registration.fee.view')}}">Registration Fee</a></li>
+                        <li><a href="{{route('student.monthly.fee.view')}}">Monthly Fee</a></li>
                     </ul>
                 </li>
 
