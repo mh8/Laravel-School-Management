@@ -68,7 +68,8 @@
                         <img src="{{ asset('backend/assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="apps"><span>Employee Management</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
-                        <li><a href="{{route('employee.registration.view')}}">Employee Registration</a></li>
+                        <li><a href="{{ route('employee.registration.view') }}">Employee Registration</a></li>
+                        <li><a href="{{ route('employee.salary.view') }}">Employee Slary</a></li>
                     </ul>
                 </li>
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\Employee\EmployeeRegistrationController;
+use App\Http\Controllers\backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\backend\ProfileController;
 use App\Http\Controllers\backend\Setup\AssignSubjectController;
 use App\Http\Controllers\backend\Setup\DesignationController;
@@ -172,12 +173,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('registration/view', [EmployeeRegistrationController::class, 'EmployeeRegistrationView'])->name('employee.registration.view');
         Route::get('registration/create', [EmployeeRegistrationController::class, 'EmployeeRegistrationCreate'])->name('employee.registration.create');
         Route::post('registration/store', [EmployeeRegistrationController::class, 'EmployeeRegistrationStore'])->name('employee.registration.store');
-        Route::get('registration/edit/{employee_id}', [EmployeeRegistrationController::class, 'EmployeeRegistrationEdit'])->name('employee.registration.edit');
-        Route::post('registration/update/{employee_id}', [EmployeeRegistrationController::class, 'EmployeeRegistrationUpdate'])->name('employee.registration.update');
-        Route::get('registration/delete/{employee_id}', [EmployeeRegistrationController::class, 'EmployeeRegistrationDelete'])->name('employee.registration.delete');
-        Route::get('registration/promotion/{employee_id}', [EmployeeRegistrationController::class, 'EmployeeRegistrationPromotionView'])->name('employee.registration.promotion');
-        Route::post('registration/promotion/update/{employee_id}', [EmployeeRegistrationController::class, 'EmployeeRegistrationPromotionUpdate'])->name('employee.registration.promotion.update');
-        Route::get('registration/promotion/details/{employee_id}', [EmployeeRegistrationController::class, 'EmployeeRegistrationDetails'])->name('employee.registration.promotion.details');
+        Route::get('registration/edit/{id}', [EmployeeRegistrationController::class, 'EmployeeRegistrationEdit'])->name('employee.registration.edit');
+        Route::post('registration/update/{id}', [EmployeeRegistrationController::class, 'EmployeeRegistrationUpdate'])->name('employee.registration.update');
+        Route::get('registration/details/{id}', [EmployeeRegistrationController::class, 'EmployeeRegistrationDetails'])->name('employee.registration.details');
+        Route::get('registration/delete/{id}', [EmployeeRegistrationController::class, 'EmployeeRegistrationDelete'])->name('employee.registration.delete');
 
+        //Employee Salary Routes
+        Route::get('salary/view', [EmployeeSalaryController::class, 'EmployeeSalaryView'])->name('employee.salary.view');
+        Route::get('salary/increment/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryIncrement'])->name('employee.salary.increment');
+        Route::post('salary/increment/store/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryStore'])->name('employee.salary.increment.store');
+        Route::get('salary/details/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryDetails'])->name('employee.salary.details');
     });
 });

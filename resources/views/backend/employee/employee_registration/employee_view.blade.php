@@ -19,7 +19,7 @@ Employee List
             <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="card-title">Employee List</h5>
-                    <a href="{{ route('designation.create') }}" class="btn btn-primary" style="float: right;">Add Employee</a>
+                    <a href="{{ route('employee.registration.create') }}" class="btn btn-primary" style="float: right;">Add Employee</a>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle"></h6>
@@ -28,17 +28,17 @@ Employee List
                             <thead class="thead-dark">
                                 <tr>
                                     <th width="5%">Sl</th>
-                                    <th>Name</th>
-                                    <th>ID No</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th>Gender</th>
-                                    <th>Join Date</th>
-                                    <th>Salary</th>
+                                    <th width="10%">Name</th>
+                                    <th width="10%">ID No</th>
+                                    <th width="10%">Email</th>
+                                    <th width="10%">Mobile</th>
+                                    <th width="8%">Gender</th>
+                                    <th width="8%">Join Date</th>
+                                    <th width="8%">Salary</th>
                                     @if (Auth::user()->usertype == 'Admin')
-                                    <th>Code</th>
+                                    <th width="5%">Code</th>
                                     @endif
-                                    <th>Action</th>
+                                    <th width="10%">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="">
@@ -50,16 +50,19 @@ Employee List
                                     <td>{{ $employee->email }}</td>
                                     <td>{{ $employee->mobile }}</td>
                                     <td>{{ $employee->gender }}</td>
-                                    <td>{{ $employee->join_date }}</td>
+                                    <td>{{ $employee->joindate }}</td>
                                     <td>{{ $employee->salary }}</td>
                                     @if (Auth::user()->usertype == 'Admin')
                                     <td>{{ $employee->code }}</td>
                                     @endif
 
-                                    <td style="white-space: nowrap; width: 15%;">
-                                        <a href="{{ route('designation.edit', $employee->id ) }}" style="float: none; margin: 5px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
+                                    <td style="white-space: nowrap;">
 
-                                        <a href="" class="tabledit-delete-button btn btn-sm btn-danger" style="margin: 5px; float: none;" id="delete"><span class="ti-trash"></span></a>
+                                        <a href="{{ route('employee.registration.edit', $employee->id ) }}" style="float: none; margin: 1px;" class="tabledit-edit-button btn btn-info"><span class="ti-pencil"></span></a>
+
+                                        <a target="_blank" title="Details" href="{{ route('employee.registration.details', $employee->id) }}" style="float: none;" class="btn btn-info"><i class="feather icon-eye"></i></a>
+
+                                        <a href="" class="tabledit-delete-button btn btn-danger" style="margin: 1px; float: none;" id="delete"><span class="ti-trash"></span></a>
                                     </td>
                                 </tr>
                                 @endforeach
