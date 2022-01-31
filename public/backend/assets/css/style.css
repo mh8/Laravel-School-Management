@@ -168,7 +168,7 @@ code {
 }
 
 .leftbar {
-  width: 260px;
+  /* width: 260px; */
   height: 100%;
   position: fixed;
   background: #0d1625;
