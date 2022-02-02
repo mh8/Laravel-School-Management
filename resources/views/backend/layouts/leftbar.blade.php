@@ -69,7 +69,8 @@
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{ route('employee.registration.view') }}">Employee Registration</a></li>
-                        <li><a href="{{ route('employee.salary.view') }}">Employee Slary</a></li>
+                        <li><a href="{{ route('employee.salary.view') }}">Employee Salary</a></li>
+                        <li><a href="{{ route('employee.leave.view') }}">Employee Leave</a></li>
                     </ul>
                 </li>
 

@@ -56,5 +56,7 @@ class EmployeeSalaryController extends Controller
     {
         $data['details'] = User::find($id);
         $data['salary_log'] = EmployeeSalaryLog::where('employee_id', $data['details']->id)->get();
+
+        return view('backend.employee.employee_salary.salary_details', $data);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\backend\Employee\EmployeeRegistrationController;
 use App\Http\Controllers\backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\backend\ProfileController;
@@ -183,5 +184,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('salary/increment/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryIncrement'])->name('employee.salary.increment');
         Route::post('salary/increment/store/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryStore'])->name('employee.salary.increment.store');
         Route::get('salary/details/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryDetails'])->name('employee.salary.details');
+
+        //Employee Leave Routes
+        Route::get('leave/view', [EmployeeLeaveController::class, 'EmployeeLeaveView'])->name('employee.leave.view');
+        Route::get('leave/create', [EmployeeLeaveController::class, 'EmployeeLeaveCreate'])->name('employee.leave.create');
+        Route::post('leave/store', [EmployeeLeaveController::class, 'EmployeeLeaveStore'])->name('employee.leave.store');
     });
 });

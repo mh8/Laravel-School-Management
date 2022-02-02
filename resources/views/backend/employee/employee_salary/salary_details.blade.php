@@ -1,5 +1,5 @@
 @section('title')
-Employee Salary List
+Employee Salary Details
 @endsection
 @extends('backend.layouts.master')
 @section('style')
@@ -18,8 +18,9 @@ Employee Salary List
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Employee Salary List</h5>
-                    <a href="{{ route('employee.registration.create') }}" class="btn btn-primary" style="float: right;">Add Employee</a>
+                    <h3 class="card-title mb-1 font-weight-bold">Employee Salary Details</h3>
+                    <h6><strong>Employee Name: </strong> {{ $details->name }}</h6>
+                    <h6><strong>Employee ID No: </strong> {{ $details->id_no }}</h6>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle"></h6>
@@ -28,27 +29,20 @@ Employee Salary List
                             <thead class="thead-dark">
                                 <tr>
                                     <th width="5%">Sl</th>
-                                    <th >Name</th>
-                                    <th >ID No</th>
-                                    <th >Join Date</th>
-                                    <th >Salary</th>
-                                    <th >Action</th>
+                                    <th >Previous Salary</th>
+                                    <th >Increment Salary</th>
+                                    <th >Present Salary</th>
+                                    <th >Effected Date</th>
                                 </tr>
                             </thead>
                             <tbody class="">
-                                @foreach($allData as $key => $value)
+                                @foreach($salary_log as $key => $value)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $value->name }}</td>
-                                    <td>{{ $value->id_no }}</td>
-                                    <td>{{ date('d-m-Y', strtotime($value->joindate))  }}</td>
-                                    <td>{{ $value->salary }}</td>
-
-                                    <td style="white-space: nowrap;">
-                                        <a title="Increment" href="{{ route('employee.salary.increment', $value->id ) }}" style="float: none; margin: 1px;" class="btn btn-warning"><span class="ti-pencil"></span></a>
-
-                                        <a target="_blank" title="Details" href="{{ route('employee.salary.details', $value->id) }}" style="float: none;" class="btn btn-info"><i class="feather icon-eye"></i></a>
-                                    </td>
+                                    <td>{{ $value->previous_salary }}</td>
+                                    <td>{{ $value->increment_salary }}</td>
+                                    <td>{{ $value->present_salary }}</td>
+                                    <td>{{ $value->effected_salary }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
