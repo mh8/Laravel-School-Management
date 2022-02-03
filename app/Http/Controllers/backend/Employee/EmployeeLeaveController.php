@@ -55,6 +55,55 @@ class EmployeeLeaveController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('employee_leave_view')->with($notification);
+        return redirect()->route('employee.leave.view')->with($notification);
+    }
+
+    //
+    public function EmployeeLeaveEdit($id)
+    {
+        $data['employee_data'] = EmployeeLeave::find($id);
+        $data['employees'] = User::where('usertype', 'employee')->get();
+        $data['leave_purpose'] = LeavePurpose::all();
+        return view('backend.employee.employee_leave.employee_leave_edit', $data);
+
+    }
+
+    //
+    public function EmployeeLeaveUpdate(Request $request, $id)
+    {
+        if ($request->leave_purpose_id == 0) {
+            $leave_purpose = new LeavePurpose();
+            $leave_purpose->name = $request->name;
+            $leave_purpose->save();
+            $leave_purpose_id = $leave_purpose->id;
+        } else{
+            $leave_purpose_id = $request->leave_purpose_id;
+        }
+        //
+        $employee_leave = EmployeeLeave::find($id);
+        $employee_leave->employee_id = $request->employee_id;
+        $employee_leave->leave_purpose_id = $leave_purpose_id;
+        $employee_leave->leave_from = date('Y-m-d', strtotime($request->leave_from));
+        $employee_leave->leave_to = date('Y-m-d', strtotime($request->leave_to));
+        $employee_leave->save();
+
+        $notification = array(
+            'message' => 'Leave Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('employee.leave.view')->with($notification);
+    }
+
+    //
+    public function EmployeeLeaveDelete($id)
+    {
+        $employee_leave = EmployeeLeave::find($id);
+        $employee_leave->delete();
+
+        $notification = array(
+            'message' => 'Leave Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('employee.leave.view')->with($notification);
     }
 }

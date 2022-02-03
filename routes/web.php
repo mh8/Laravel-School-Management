@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\Employee\EmployeeAttendanceController;
 use App\Http\Controllers\backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\backend\Employee\EmployeeRegistrationController;
 use App\Http\Controllers\backend\Employee\EmployeeSalaryController;
@@ -189,5 +190,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('leave/view', [EmployeeLeaveController::class, 'EmployeeLeaveView'])->name('employee.leave.view');
         Route::get('leave/create', [EmployeeLeaveController::class, 'EmployeeLeaveCreate'])->name('employee.leave.create');
         Route::post('leave/store', [EmployeeLeaveController::class, 'EmployeeLeaveStore'])->name('employee.leave.store');
+        Route::get('leave/edit/{id}', [EmployeeLeaveController::class, 'EmployeeLeaveEdit'])->name('employee.leave.edit');
+        Route::post('leave/update/{id}', [EmployeeLeaveController::class, 'EmployeeLeaveUpdate'])->name('employee.leave.update');
+        Route::get('leave/delete/{id}', [EmployeeLeaveController::class, 'EmployeeLeaveDelete'])->name('employee.leave.delete');
+
+        //Employee Attendance Routes
+        Route::get('attendance/view', [EmployeeAttendanceController::class, 'EmployeeAttendanceView'])->name('employee.attendance.view');
+        Route::get('attendance/create', [EmployeeAttendanceController::class, 'EmployeeAttendanceCreate'])->name('employee.attendance.create');
     });
 });

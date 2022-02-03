@@ -1,5 +1,5 @@
 @section('title')
-Employee Leave
+Employee Attendance
 @endsection
 @extends('backend.layouts.master')
 @section('style')
@@ -18,8 +18,8 @@ Employee Leave
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Employee Leave</h5>
-                    <a href="{{ route('employee.leave.create') }}" class="btn btn-primary" style="float: right;">Add Leave</a>
+                    <h5 class="card-title">Employee Attendance</h5>
+                    <a href="{{ route('employee.attendance.create') }}" class="btn btn-primary" style="float: right;">Add Attendance</a>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle"></h6>
@@ -30,9 +30,8 @@ Employee Leave
                                     <th width="5%">Sl</th>
                                     <th>Name</th>
                                     <th>ID No</th>
-                                    <th>Leave Purpose</th>
-                                    <th>Leave From</th>
-                                    <th>Leave To</th>
+                                    <th>Date</th>
+                                    <th>Attendance Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -42,7 +41,6 @@ Employee Leave
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $leave['user']['name'] }}</td>
                                     <td>{{ $leave['user']['id_no'] }}</td>
-                                    <td>{{ $leave['purpose']['name']}}</td>
                                     <td>{{ $leave->leave_from }}</td>
                                     <td>{{ $leave->leave_to }}</td>
                                     <td style="white-space: nowrap; width: 15%;">

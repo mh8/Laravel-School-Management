@@ -1,5 +1,5 @@
 @section('title')
-Add Leave
+Edit Leave
 @endsection
 @extends('backend.layouts.master')
 @section('style')
@@ -16,10 +16,10 @@ Add Leave
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Add Leave</h5>
+                    <h5 class="card-title">Edit Leave</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('employee.leave.store') }}" method="POST">
+                    <form action="{{ route('employee.leave.update', $employee_data->id) }}" method="POST">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -27,7 +27,7 @@ Add Leave
                                 <select name="employee_id" class="select2-single form-control" id="employee_id">
                                     <option value="" disabled>Select</option>
                                     @foreach ($employees as $employee)
-                                    <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                                    <option value="{{ $employee->id }}" {{ ($employee_data->employee_id == $employee->id) ? 'selected' : '' }}>{{ $employee->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -35,9 +35,9 @@ Add Leave
                             <div class="form-group col-md-6">
                                 <label for="leave_purpose_id"><strong>Leave Purpose</strong> <span class="text-danger">*</span></label>
                                 <select name="leave_purpose_id" class="select2-single form-control" id="leave_purpose_id">
-                                    <option value="" disabled selected>Select</option>
+                                    <option value="" disabled>Select</option>
                                     @foreach ($leave_purpose as $leave)
-                                    <option value="{{ $leave->id }}">{{ $leave->name }}</option>
+                                    <option value="{{ $leave->id }}" {{ ($employee_data->leave_purpose_id == $leave->id) ? 'selected' : '' }}>{{ $leave->name }}</option>
                                     @endforeach
                                     <option value="0">Others</option>
                                 </select>
@@ -47,11 +47,11 @@ Add Leave
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="leave_from"><strong>Leave From</strong> <span class="text-danger">*</span></label>
-                                <input type="date" name="leave_from" class="form-control" id="leave_from">
+                                <input type="date" name="leave_from" class="form-control" id="leave_from" value="{{ $employee_data->leave_from }}">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="leave_to"><strong>Leave To</strong> <span class="text-danger">*</span></label>
-                                <input type="date" name="leave_to" class="form-control" id="leave_to">
+                                <input type="date" name="leave_to" class="form-control" id="leave_to" value="{{ $employee_data->leave_to }}">
                             </div>
                         </div>
 
