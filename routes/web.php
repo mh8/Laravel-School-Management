@@ -197,5 +197,14 @@ Route::group(['middleware' => 'auth'], function () {
         //Employee Attendance Routes
         Route::get('attendance/view', [EmployeeAttendanceController::class, 'EmployeeAttendanceView'])->name('employee.attendance.view');
         Route::get('attendance/create', [EmployeeAttendanceController::class, 'EmployeeAttendanceCreate'])->name('employee.attendance.create');
+        Route::post('attendance/store', [EmployeeAttendanceController::class, 'EmployeeAttendanceStore'])->name('employee.attendance.store');
+        Route::get('attendance/edit/{date}', [EmployeeAttendanceController::class, 'EmployeeAttendanceEdit'])->name('employee.attendance.edit');
+        Route::post('attendance/update/{date}', [EmployeeAttendanceController::class, 'EmployeeAttendanceUpdate'])->name('employee.attendance.update');
+        Route::get('attendance/details/{date}', [EmployeeAttendanceController::class, 'EmployeeAttendanceDetails'])->name('employee.attendance.details');
+
+        //Employee Monthly Salary Routes
     });
+
+
+
 });

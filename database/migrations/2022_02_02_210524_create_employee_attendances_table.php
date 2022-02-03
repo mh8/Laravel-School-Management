@@ -16,7 +16,7 @@ class CreateEmployeeAttendancesTable extends Migration
         Schema::create('employee_attendances', function (Blueprint $table) {
             $table->id();
             $table->integer('employee_id')->comment('employee_id = User id');
-            $table->date('attendance_date');
+            $table->date('date');
             $table->string('attendance_status')->comment('attendance_status = Present, Absent, Leave, Half Day');
             $table->timestamps();
         });

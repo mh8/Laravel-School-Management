@@ -72,6 +72,7 @@
                         <li><a href="{{ route('employee.salary.view') }}">Employee Salary</a></li>
                         <li><a href="{{ route('employee.leave.view') }}">Employee Leave</a></li>
                         <li><a href="{{ route('employee.attendance.view') }}">Employee Attendance</a></li>
+                        <li><a href="{{ route('employee.monthly.salary') }}">Employee Monthly Salary</a></li>
                     </ul>
                 </li>
 

@@ -8,6 +8,13 @@ Employee Attendance
 <link href="{{ asset('backend/assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- Responsive Datatable css -->
 <link href="{{ asset('backend/assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+<style>
+    .badge-pill{
+        padding-right: 1em !important;
+        padding-left: 1em !important;
+        font-weight: 600 !important;
+    }
+</style>
 @endsection
 @section('rightbar-content')
 <!-- Start Contentbar -->
@@ -18,7 +25,7 @@ Employee Attendance
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Employee Attendance</h5>
+                    <h5 class="card-title">Employee Attendance Details</h5>
                     <a href="{{ route('employee.attendance.create') }}" class="btn btn-primary" style="float: right;">Add Attendance</a>
                 </div>
                 <div class="card-body">
@@ -28,25 +35,31 @@ Employee Attendance
                             <thead class="thead-dark">
                                 <tr>
                                     <th width="5%">Sl</th>
-                                    <!-- <th>Name</th> -->
-                                    <!-- <th>ID No</th> -->
+                                    <th>Name</th>
+                                    <th>ID No</th>
                                     <th>Date</th>
-                                    <!-- <th>Attendance Status</th> -->
+                                    <th>Attendance Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="">
-                                @foreach($employee_data as $key => $value)
+                                @foreach($details as $key => $detail)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
+                                    <td>{{ $detail['user']['name'] }}</td>
+                                    <td>{{ $detail['user']['id_no'] }}</td>
+                                    <td>{{ date('d-m-y', strtotime($detail->date)) }}</td>
+                                    <td><strong class="badge badge-pill
+                                    @if ($detail->attendance_status == 'Present') badge-success
+                                    @elseif ($detail->attendance_status == 'Absent') badge-danger
+                                    @elseif ($detail->attendance_status == 'Leave') badge-info
+                                    @endif
+                                    " style="font-size: 12px;">{{ $detail->attendance_status }}</strong></td>
 
-                                    <td>{{ date('d-m-y', strtotime($value->date))  }}</td>
                                     <td style="white-space: nowrap; width: 15%;">
-                                        <a href="{{ route('employee.attendance.edit', $value->date ) }}" style="float: none; margin: 1px;" class="tabledit-edit-button btn btn-info"><span class="ti-pencil"></span></a>
+                                        <a href="{{ route('employee.attendance.edit', $detail->date ) }}" style="float: none; margin: 5px;" class="tabledit-edit-button btn btn-sm btn-info"><span class="ti-pencil"></span></a>
 
-                                        <a target="_blank" title="Details" href="{{ route('employee.attendance.details', $value->date) }}" style="float: none;" class="btn btn-info"><i class="feather icon-eye"></i></a>
-
-                                        <a href="{{ route('employee.attendance.details', $value->date) }}" class="tabledit-delete-button btn btn-danger" style="margin: 1px; float: none;" id="delete"><span class="ti-trash"></span></a>
+                                        <a href="{{ route('employee.leave.delete', $detail->date) }}" class="tabledit-delete-button btn btn-sm btn-danger" style="margin: 5px; float: none;" id="delete"><span class="ti-trash"></span></a>
                                     </td>
                                 </tr>
                                 @endforeach
