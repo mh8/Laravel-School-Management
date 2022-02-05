@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\DefaultController;
 use App\Http\Controllers\backend\Employee\EmployeeAttendanceController;
 use App\Http\Controllers\backend\Employee\EmployeeLeaveController;
+use App\Http\Controllers\backend\Employee\EmployeeMonthlySalaryController;
 use App\Http\Controllers\backend\Employee\EmployeeRegistrationController;
 use App\Http\Controllers\backend\Employee\EmployeeSalaryController;
+use App\Http\Controllers\Backend\Marks\GradeController;
+use App\Http\Controllers\backend\Marks\MarksController;
 use App\Http\Controllers\backend\ProfileController;
 use App\Http\Controllers\backend\Setup\AssignSubjectController;
 use App\Http\Controllers\backend\Setup\DesignationController;
@@ -35,7 +39,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -44,9 +48,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
 
 Route::group(['middleware' => 'auth'], function () {
-
-
-
+    //
     Route::prefix('user')->group(function () {
         Route::get('/view', [UserController::class, 'UserView'])->name('user.view');
         Route::get('/create', [UserController::class, 'UserCreate'])->name('user.create');
@@ -202,9 +204,32 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('attendance/update/{date}', [EmployeeAttendanceController::class, 'EmployeeAttendanceUpdate'])->name('employee.attendance.update');
         Route::get('attendance/details/{date}', [EmployeeAttendanceController::class, 'EmployeeAttendanceDetails'])->name('employee.attendance.details');
 
+
         //Employee Monthly Salary Routes
+        Route::get('monthly/salary/view', [EmployeeMonthlySalaryController::class, 'EmployeeMonthlySalaryView'])->name('employee.monthly.salary.view');
+        Route::get('monthly/salary/get', [EmployeeMonthlySalaryController::class, 'EmployeeMonthlySalaryGet'])->name('employee.monthly.salary.get');
+        Route::get('monthly/salary/payslip/{employee_id}', [EmployeeMonthlySalaryController::class, 'EmployeeMonthlySalaryPayslip'])->name('employee.monthly.salary.payslip');
     });
 
+    //Marks Routes
+    Route::prefix('marks')->group(function () {
+        //Marks Routes
+        // Route::get('view', [MarksController::class, 'MarksView'])->name('marks.view');
+        Route::get('entry/add', [MarksController::class, 'MarksAdd'])->name('marks.entry.add');
+        Route::post('entry/store', [MarksController::class, 'MarksStore'])->name('marks.entry.store');
+        Route::get('entry/edit/', [MarksController::class, 'MarksEdit'])->name('marks.entry.edit');
+        Route::get('marks/edit/getstudents',[MarksController::class, 'MarksEditGetStudents'])->name('marks.edit.get.students');
+        Route::post('entry/update', [MarksController::class, 'MarksUpdate'])->name('marks.entry.update');
+        Route::get('details/{id}', [MarksController::class, 'MarksDetails'])->name('marks.details');
+        Route::get('delete/{id}', [MarksController::class, 'MarksDelete'])->name('marks.delete');
+
+        //Marks Grade Routes
+        Route::get('grade/view', [GradeController::class, 'MarksGradeView'])->name('marks.grade.view');
+    });
+
+
+    Route::get('marks/getsubjects',[DefaultController::class, 'GetSubjects'])->name('marks.get.subjects');
+    Route::get('marks/getstudents',[DefaultController::class, 'GetStudents'])->name('marks.get.students');
 
 
 });

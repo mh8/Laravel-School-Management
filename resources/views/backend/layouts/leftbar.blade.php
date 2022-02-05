@@ -72,10 +72,19 @@
                         <li><a href="{{ route('employee.salary.view') }}">Employee Salary</a></li>
                         <li><a href="{{ route('employee.leave.view') }}">Employee Leave</a></li>
                         <li><a href="{{ route('employee.attendance.view') }}">Employee Attendance</a></li>
-                        <li><a href="{{ route('employee.monthly.salary') }}">Employee Monthly Salary</a></li>
+                        <li><a href="{{ route('employee.monthly.salary.view') }}">Employee Monthly Salary</a></li>
                     </ul>
                 </li>
-
+                <li>
+                    <a href="javaScript:void();">
+                        <img src="{{ asset('backend/assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="apps"><span>Marks Management</span><i class="feather icon-chevron-right pull-right"></i>
+                    </a>
+                    <ul class="vertical-submenu">
+                        <li><a href="{{ route('marks.entry.add') }}">Marks Entry</a></li>
+                        <li><a href="{{ route('marks.entry.edit') }}">Marks Edit</a></li>
+                        <li><a href="{{ route('marks.grade.view') }}">Marks Grade</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- End Navigationbar -->

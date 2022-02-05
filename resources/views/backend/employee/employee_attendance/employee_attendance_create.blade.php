@@ -61,7 +61,6 @@ Add Attendance
                                                         <input name="attendance_status{{$key}}" type="radio" id="leave{{$key}}" value="Leave">
                                                         <label for="leave{{$key}}">&nbsp; Leave</label>
                                                     </div>
-
                                                 </div>
                                             </td>
                                         </tr>

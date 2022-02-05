@@ -40,7 +40,7 @@ Student Monthly Fee List
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="month">Class</label>
+                                <label for="month">Month</label>
                                 <select id="month" name="month" class="form-control">
                                     <option selected="">Choose...</option>
                                     <option value="January">January</option>
