@@ -12,13 +12,13 @@
             <ul class="vertical-menu">
                 <li class="">
                     <a href="{{route('dashboard')}}">
-                        <img src="{{ asset('backend/assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Dashboard</span>
+                        <i class="fa fa-dashcube"></i><span>Dashboard</span>
                     </a>
                 </li>
                 @if(Auth::user()->role == 'Admin')
                 <li>
                     <a href="javaScript:void();">
-                        <img src="{{ asset('backend/assets/images/svg-icon/user.svg') }}" class="img-fluid" alt="user"><span>User</span><i class="feather icon-chevron-right pull-right"></i>
+                        <i class="fa fa-user-circle-o"></i><span>User</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{ route('user.view') }}">User List</a></li>
@@ -28,7 +28,7 @@
                 @endif
                 <li>
                     <a href="javaScript:void();">
-                        <img src="{{ asset('backend/assets/images/svg-icon/advanced.svg') }}" alt=""><span>Manage Profile</span><i class="feather icon-chevron-right pull-right"></i>
+                        <i class="fa fa-slideshare"></i>Manage Profile</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{ route('profile.view') }}">Profile</a></li>
@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     <a href="javaScript:void();">
-                        <img src="{{ asset('backend/assets/images/svg-icon/components.svg') }}" alt=""><span>Setup Management</span><i class="feather icon-chevron-right pull-right"></i>
+                        <i class="ion ion-ios-settings"></i><span>Setup Management</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{ route('student.class.view') }}">Student Class</a></li>
@@ -54,7 +54,7 @@
                 </li>
                 <li>
                     <a href="javaScript:void();">
-                        <img src="{{ asset('backend/assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="apps"><span>Student Management</span><i class="feather icon-chevron-right pull-right"></i>
+                        <i class="fa fa-mortar-board"></i></i><span>Student Management</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{route('student.registration.view')}}">Student Registration</a></li>
@@ -65,7 +65,7 @@
                 </li>
                 <li>
                     <a href="javaScript:void();">
-                        <img src="{{ asset('backend/assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="apps"><span>Employee Management</span><i class="feather icon-chevron-right pull-right"></i>
+                        <i class="fa fa-users"></i><span>Employee Management</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{ route('employee.registration.view') }}">Employee Registration</a></li>
@@ -77,12 +77,20 @@
                 </li>
                 <li>
                     <a href="javaScript:void();">
-                        <img src="{{ asset('backend/assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="apps"><span>Marks Management</span><i class="feather icon-chevron-right pull-right"></i>
+                        <i class="fa fa-shekel"></i><span>Marks Management</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{ route('marks.entry.add') }}">Marks Entry</a></li>
                         <li><a href="{{ route('marks.entry.edit') }}">Marks Edit</a></li>
                         <li><a href="{{ route('marks.grade.view') }}">Marks Grade</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javaScript:void();">
+                        <i class="fa fa-money"></i><span>Account Management</span><i class="feather icon-chevron-right pull-right"></i>
+                    </a>
+                    <ul class="vertical-submenu">
+                        <li><a href="{{ route('student.fee.view') }}">Student Fee</a></li>
                     </ul>
                 </li>
             </ul>

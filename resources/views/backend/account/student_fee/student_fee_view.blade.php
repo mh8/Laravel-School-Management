@@ -1,5 +1,5 @@
 @section('title')
-Grade Marks
+Student Fee
 @endsection
 @extends('backend.layouts.master')
 @section('style')
@@ -18,8 +18,8 @@ Grade Marks
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Grade Marks</h5>
-                    <a href="{{ route('marks.grade.create') }}" class="btn btn-primary" style="float: right;">Add Grade Mark</a>
+                    <h5 class="card-title">Student Fee</h5>
+                    <a href="{{ route('student.fee.create') }}" class="btn btn-primary" style="float: right;">Add Student Fee</a>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle"></h6>
@@ -28,30 +28,26 @@ Grade Marks
                             <thead class="thead-dark">
                                 <tr>
                                     <th width="5%">Sl</th>
-                                    <th width="10%">Letter Grade</th>
-                                    <th width="10%">Grade Point</th>
-                                    <th width="10%">Start Marks</th>
-                                    <th width="10%">End Marks</th>
-                                    <th width="10%">Point Range</th>
-                                    <th width="10%">Remarks</th>
-                                    <th width="10%">Action</th>
+                                    <th width="10%">ID No</th>
+                                    <th width="10%">Name</th>
+                                    <th width="10%">Year</th>
+                                    <th width="10%">Class</th>
+                                    <th width="10%">Fee Type</th>
+                                    <th width="10%">Amount</th>
+                                    <th width="10%">Date</th>
                                 </tr>
                             </thead>
                             <tbody class="">
-                                @foreach($marks_grade as $key => $value)
+                                @foreach($allData as $key => $value)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $value->grade_name }}</td>
-                                    <td>{{ $value->grade_point }}</td>
-                                    <td>{{ $value->start_marks }}</td>
-                                    <td>{{ $value->end_marks }}</td>
-                                    <td>{{ $value->start_point }} - {{ $value->end_point }}</td>
-                                    <td>{{ $value->remarks }}</td>
-                                    <td style="white-space: nowrap;">
-                                        <a href="{{ route('marks.grade.edit', $value->id ) }}" style="float: none; margin: 1px;" class="btn btn-info"><span class="ti-pencil"></span></a>
-
-                                        <a href="" class="btn btn-danger" style="float: none;" id="delete"><span class="ti-trash"></span></a>
-                                    </td>
+                                    <td>{{ $value['student']['id_no'] }}</td>
+                                    <td>{{ $value['student']['name'] }}</td>
+                                    <td>{{ $value['student_year']['year'] }}</td>
+                                    <td>{{ $value['student_class']['name'] }}</td>
+                                    <td>{{ $value['fee_category']['name'] }}</td>
+                                    <td>{{ $value->amount }}</td>
+                                    <td>{{ date('M-Y', strtotime($value->date)) }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

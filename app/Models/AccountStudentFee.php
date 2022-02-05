@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AssignStudent extends Model
+class AccountStudentFee extends Model
 {
     use HasFactory;
-
     public function student()
     {
         return $this->belongsTo(User::class, 'student_id', 'id');
@@ -33,5 +32,8 @@ class AssignStudent extends Model
     {
         return $this->belongsTo(StudentGroup::class, 'group_id', 'id');
     }
-
+    public function fee_category()
+    {
+        return $this->belongsTo(FeeCategory::class, 'fee_category_id', 'id');
+    }
 }

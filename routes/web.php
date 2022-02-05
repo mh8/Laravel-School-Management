@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\Account\StudentFeeController;
 use App\Http\Controllers\backend\DefaultController;
 use App\Http\Controllers\backend\Employee\EmployeeAttendanceController;
 use App\Http\Controllers\backend\Employee\EmployeeLeaveController;
@@ -225,11 +226,34 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Marks Grade Routes
         Route::get('grade/view', [GradeController::class, 'MarksGradeView'])->name('marks.grade.view');
+        Route::get('grade/create', [GradeController::class, 'MarksGradeCreate'])->name('marks.grade.create');
+        Route::post('grade/store', [GradeController::class, 'MarksGradeStore'])->name('marks.grade.store');
+        Route::get('grade/edit/{id}', [GradeController::class, 'MarksGradeEdit'])->name('marks.grade.edit');
+        Route::post('grade/update/{id}', [GradeController::class, 'MarksGradeUpdate'])->name('marks.grade.update');
+        Route::get('grade/delete/{id}', [GradeController::class, 'MarksGradeDelete'])->name('marks.grade.delete');
+    });
+
+    //Account Management Routes
+    Route::prefix('account')->group(function () {
+        //Student Fee Routes
+        Route::get('student/fee/view', [StudentFeeController::class, 'StudentFeeView'])->name('student.fee.view');
+        Route::get('student/fee/create', [StudentFeeController::class, 'StudentFeeCreate'])->name('student.fee.create');
+        Route::get('account/fee/getstudents', [StudentFeeController::class, 'StudentFeeGetStudents'])->name('account.fee.getstudents');
+        Route::post('student/fee/store', [StudentFeeController::class, 'StudentFeeStore'])->name('account.fee.store');
+
+        //Account Type Routes
+        Route::get('type/view', [AccountTypeController::class, 'AccountTypeView'])->name('account.type.view');
+        Route::get('type/create', [AccountTypeController::class, 'AccountTypeCreate'])->name('account.type.create');
+        Route::post('type/store', [AccountTypeController::class, 'AccountTypeStore'])->name('account.type.store');
+        Route::get('type/edit/{id}', [AccountTypeController::class, 'AccountTypeEdit'])->name('account.type.edit');
+        Route::post('type/update/{id}', [AccountTypeController::class, 'AccountTypeUpdate'])->name('account.type.update');
+        Route::get('type/delete/{id}', [AccountTypeController::class, 'AccountTypeDelete'])->name('account.type.delete');
     });
 
 
     Route::get('marks/getsubjects',[DefaultController::class, 'GetSubjects'])->name('marks.get.subjects');
     Route::get('marks/getstudents',[DefaultController::class, 'GetStudents'])->name('marks.get.students');
+
 
 
 });
