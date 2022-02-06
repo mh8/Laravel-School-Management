@@ -1,5 +1,5 @@
 @section('title')
-Student Fee
+Employee Salary Add
 @endsection
 @extends('backend.layouts.master')
 @section('style')
@@ -15,43 +15,16 @@ Student Fee
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Student Search</h5>
+                    <h5 class="card-title">Emloyee Search</h5>
                 </div>
                 <div class="card-body">
 
                     <div class="form-row">
-                        <div class="form-group col-md-2">
-                            <label for="year_id">Year</label>
-                            <select id="year_id" name="year_id" class="form-control">
-                                <option selected="">Choose...</option>
-                                @foreach ($years as $year)
-                                <option value="{{ $year->id }}" {{ (@$year_id == $year->id) ? "selected" : "" }}>{{ $year->year }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="class_id">Class</label>
-                            <select id="class_id" name="class_id" class="form-control">
-                                <option selected="">Choose...</option>
-                                @foreach ($classes as $class)
-                                <option value="{{ $class->id }}">{{ $class->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="fee_category_id">Fee Category</label>
-                            <select id="fee_category_id" name="fee_category_id" class="form-control">
-                                <option selected="">Choose...</option>
-                                @foreach ($fee_categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-6">
                             <label for="date"><strong>Date</strong> </label>
                             <input type="date" name="date" id="date" class="form-control">
                         </div>
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-6">
                             <a id="search" name="search" class="btn btn-rounded btn-outline-info mt-3 ml-5 p-3">Search</a>
                         </div>
                     </div>
@@ -60,7 +33,7 @@ Student Fee
                     <div class="">
                         <div id="DocumentResults">
                             <script id="document-template" type="text/x-handlebars-template">
-                                <form method="post" action="{{ route('account.fee.store') }}">
+                                <form method="post" action="{{ route('account.salary.store') }}">
                                     @csrf
                                     <table class="table table-bordered table-striped">
                                         <thead>
@@ -95,18 +68,12 @@ Student Fee
 @section('script')
 <script>
     $(document).on('click', '#search', function() {
-        var year_id = $('#year_id').val();
-        var class_id = $('#class_id').val();
-        var fee_category_id = $('#fee_category_id').val();
         var date = $('#date').val();
 
         $.ajax({
-            url: "{{ route('account.fee.getstudents') }}",
+            url: "{{ route('account.salary.getemployee') }}",
             type: 'get',
             data: {
-                'year_id': year_id,
-                'class_id': class_id,
-                'fee_category_id': fee_category_id,
                 'date': date,
             },
             beforeSend: function() {},

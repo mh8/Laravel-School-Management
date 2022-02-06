@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\Account\AccountSalaryController;
+use App\Http\Controllers\backend\Account\OtherAccountController;
 use App\Http\Controllers\backend\Account\StudentFeeController;
 use App\Http\Controllers\backend\DefaultController;
 use App\Http\Controllers\backend\Employee\EmployeeAttendanceController;
@@ -241,13 +243,22 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('account/fee/getstudents', [StudentFeeController::class, 'StudentFeeGetStudents'])->name('account.fee.getstudents');
         Route::post('student/fee/store', [StudentFeeController::class, 'StudentFeeStore'])->name('account.fee.store');
 
-        //Account Type Routes
-        Route::get('type/view', [AccountTypeController::class, 'AccountTypeView'])->name('account.type.view');
-        Route::get('type/create', [AccountTypeController::class, 'AccountTypeCreate'])->name('account.type.create');
-        Route::post('type/store', [AccountTypeController::class, 'AccountTypeStore'])->name('account.type.store');
-        Route::get('type/edit/{id}', [AccountTypeController::class, 'AccountTypeEdit'])->name('account.type.edit');
-        Route::post('type/update/{id}', [AccountTypeController::class, 'AccountTypeUpdate'])->name('account.type.update');
-        Route::get('type/delete/{id}', [AccountTypeController::class, 'AccountTypeDelete'])->name('account.type.delete');
+        //Account Salary Routes
+        Route::get('salary/view', [AccountSalaryController::class, 'AccountSalaryView'])->name('account.salary.view');
+        Route::get('salary/create', [AccountSalaryController::class, 'AccountSalaryCreate'])->name('account.salary.create');
+        Route::post('salary/store', [AccountSalaryController::class, 'AccountSalaryStore'])->name('account.salary.store');
+        Route::get('salary/edit/{id}', [AccountSalaryController::class, 'AccountSalaryEdit'])->name('account.salary.edit');
+        // Route::post('salary/update/{id}', [AccountSalaryController::class, 'AccountSalaryUpdate'])->name('account.salary.update');
+        // Route::get('salary/delete/{id}', [AccountSalaryController::class, 'AccountSalaryDelete'])->name('account.salary.delete');
+        Route::get('salary/getemployee', [AccountSalaryController::class, 'AccountSalaryGetEmployee'])->name('account.salary.getemployee');
+
+        //Other Account Routes
+        Route::get('other/view', [OtherAccountController::class, 'AccountOtherView'])->name('account.other.view');
+        Route::get('other/create', [OtherAccountController::class, 'AccountOtherCreate'])->name('account.other.create');
+        Route::post('other/store', [OtherAccountController::class, 'AccountOtherStore'])->name('account.other.store');
+        Route::get('other/edit/{id}', [OtherAccountController::class, 'AccountOtherEdit'])->name('account.other.edit');
+        Route::post('other/update/{id}', [OtherAccountController::class, 'AccountOtherUpdate'])->name('account.other.update');
+        Route::get('other/delete/{id}', [OtherAccountController::class, 'AccountOtherDelete'])->name('account.other.delete');
     });
 
 
