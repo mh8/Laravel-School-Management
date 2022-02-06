@@ -95,6 +95,14 @@
                         <li><a href="{{ route('account.other.view') }}">Others</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javaScript:void();">
+                        <i class="fa fa-file-text-o"></i><span>Report</span><i class="feather icon-chevron-right pull-right"></i>
+                    </a>
+                    <ul class="vertical-submenu">
+                        <li><a href="{{ route('report.monthly.profit.view') }}">Monthly Profit</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- End Navigationbar -->

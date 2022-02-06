@@ -28,7 +28,7 @@ School
                                 </div>
                                 <div class="col-7 text-right">
                                     <h5 class="card-title font-14">Students</h5>
-                                    <h4 class="mb-0">2585</h4>
+                                    <h4 class="mb-0">{{ $students }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@ School
                                 </div>
                                 <div class="col-7 text-right">
                                     <h5 class="card-title font-14">Teachers</h5>
-                                    <h4 class="mb-0">263</h4>
+                                    <h4 class="mb-0">{{ $teachers }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@ School
                         </div>
                         <div class="card-body text-center">
                             <img src="{{ asset('backend/assets/images/general/school_quote.svg') }}" class="img-fluid my-3" width="150" alt="school quote">
-                            <h5 class="text-primary font-italic my-3">Be the change, You wish<br/> to see in the World.</h5>
+                            <h5 class="text-primary font-italic my-3">Be the change, You wish<br /> to see in the World.</h5>
                         </div>
                     </div>
                 </div>
@@ -188,14 +188,14 @@ School
                         <div class="card-body text-center">
                             <div class="course-slider">
                                 <div class="course-slider-item">
-                                    <h4 class="my-0">Mathematics</h4>
+                                    <h4 class="my-0">Commerce</h4>
                                     <div class="row align-items-center my-4 py-3">
                                         <div class="col-4 p-0">
                                             <h4>24</h4>
                                             <p class="mb-0">Faculty</p>
                                         </div>
                                         <div class="col-4 py-3 px-0 bg-primary-rgba rounded">
-                                            <h4 class="text-primary">543</h4>
+                                            <h4 class="text-primary">{{ $commerce }}</h4>
                                             <p class="text-primary mb-0">Students</p>
                                         </div>
                                         <div class="col-4 p-0">
@@ -223,7 +223,7 @@ School
                                             <p class="mb-0">Faculty</p>
                                         </div>
                                         <div class="col-4 py-3 px-0 bg-success-rgba rounded">
-                                            <h4 class="text-success">350</h4>
+                                            <h4 class="text-success">{{ $science }}</h4>
                                             <p class="text-success mb-0">Students</p>
                                         </div>
                                         <div class="col-4 p-0">
@@ -244,14 +244,14 @@ School
                                     </div>
                                 </div>
                                 <div class="course-slider-item">
-                                    <h4 class="my-0">English</h4>
+                                    <h4 class="my-0">Arts</h4>
                                     <div class="row align-items-center my-4 py-3">
                                         <div class="col-4 p-0">
                                             <h4>18</h4>
                                             <p class="mb-0">Faculty</p>
                                         </div>
                                         <div class="col-4 py-3 px-0 bg-secondary-rgba rounded">
-                                            <h4 class="text-secondary">470</h4>
+                                            <h4 class="text-secondary">{{ $arts }}</h4>
                                             <p class="text-secondary mb-0">Students</p>
                                         </div>
                                         <div class="col-4 p-0">

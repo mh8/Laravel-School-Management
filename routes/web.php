@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\Account\AccountSalaryController;
 use App\Http\Controllers\backend\Account\OtherAccountController;
 use App\Http\Controllers\backend\Account\StudentFeeController;
+use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\DefaultController;
 use App\Http\Controllers\backend\Employee\EmployeeAttendanceController;
 use App\Http\Controllers\backend\Employee\EmployeeLeaveController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Marks\GradeController;
 use App\Http\Controllers\backend\Marks\MarksController;
 use App\Http\Controllers\backend\ProfileController;
+use App\Http\Controllers\backend\Report\ProfitController;
 use App\Http\Controllers\backend\Setup\AssignSubjectController;
 use App\Http\Controllers\backend\Setup\DesignationController;
 use App\Http\Controllers\backend\Setup\ExamTypeController;
@@ -45,9 +47,7 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('admin.index');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -259,6 +259,19 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('other/edit/{id}', [OtherAccountController::class, 'AccountOtherEdit'])->name('account.other.edit');
         Route::post('other/update/{id}', [OtherAccountController::class, 'AccountOtherUpdate'])->name('account.other.update');
         Route::get('other/delete/{id}', [OtherAccountController::class, 'AccountOtherDelete'])->name('account.other.delete');
+    });
+
+    //Reoprt Routes
+    Route::prefix('report')->group(function () {
+        //Monthly Profit Report Routes
+        Route::get('monthly/profit/view', [ProfitController::class, 'MonthlyProfitView'])->name('report.monthly.profit.view');
+        Route::get('/profit/datewise', [ProfitController::class, 'MonthlyProfitDatewise'])->name('report.profit.datewise.get');
+        Route::get('/profit/detailview', [ProfitController::class, 'MonthlyProfitDetailView'])->name('report.profit.detail.view');
+
+        // //Account Report Routes
+        // Route::get('account/view', [AccountReportController::class, 'AccountReportView'])->name('account.report.view');
+        // Route::get('account/get', [AccountReportController::class, 'AccountReportGet'])->name('account.report.get');
+        // Route::get('account/details/{id}', [AccountReportController::class, 'AccountReportDetails'])->name('account.report.details');
     });
 
 

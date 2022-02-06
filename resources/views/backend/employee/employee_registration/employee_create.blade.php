@@ -63,7 +63,7 @@ Add Employee
                             </div>
                         </div>
                         <div class="form-row">
-                        <div class="form-group col-md-4">
+                            <div class="form-group col-md-4">
                                 <label for="address"><strong>Address</strong> <span class="text-danger">*</span></label>
                                 <input type="text" name="address" class="form-control" id="address" placeholder="Enter Address">
                             </div>
@@ -84,7 +84,25 @@ Add Employee
 
                         </div>
                         <div class="form-row">
-                        <div class="form-group col-md-4">
+                            <div class="form-group col-md-4">
+                                <label for="usertype"><strong>Usertype</strong> <span class="text-danger">*</span></label>
+                                <select name="usertype" id="usertype" class="form-control">
+                                    <option value="teacher">Teacher</option>
+                                    <option value="emlpoyee">Employee</option>
+                                    <option value="staff">Staff</option>
+                                    <option value="others">Others</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="department"><strong>Department</strong> <span class="text-danger">*</span></label>
+                                <select name="department" id="department" class="form-control">
+                                    <option value="teacher">Teacher</option>
+                                    <option value="emlpoyee">Employee</option>
+                                    <option value="staff">Staff</option>
+                                    <option value="others">Others</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
                                 <label for="designation_id"><strong>Designation</strong> <span class="text-danger">*</span></label>
                                 <select name="designation_id" class="select2-single form-control" id="designation_id">
                                     <option value="">Select</option>
@@ -93,7 +111,9 @@ Add Employee
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-md-4">
+                        </div>
+                        <div class="form-row">
+                        <div class="form-group col-md-4">
                                 <label for="salary"><strong>Salary</strong> <span class="text-danger">*</span></label>
                                 <input type="text" name="salary" class="form-control" id="salary" placeholder="Enter Salary Amount">
                             </div>
@@ -101,9 +121,6 @@ Add Employee
                                 <label for="join_date"><strong>Date of Joinning</strong> <span class="text-danger">*</span></label>
                                 <input type="date" name="join_date" class="form-control" id="join_date" placeholder="Enter Father's Name">
                             </div>
-                        </div>
-
-                        <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="class"><strong>Profile Picture</strong> <span class="text-danger">*</span></label>
                                 <input type="file" class="form-control" name="image" id="image" onchange="preview()">
