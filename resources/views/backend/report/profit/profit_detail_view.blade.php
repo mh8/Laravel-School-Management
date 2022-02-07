@@ -79,84 +79,43 @@
                 <div class="col-lg-8">
                     <div class="bd-example">
                         <table class="table table-bordered table-striped styled-table">
+                            <tr>
+                                <td colspan="3" style="text-align: center;">
+                                    Reporting Date: {{date('d-M-Y', strtotime($sdate))}} to {{date('d-M-Y', strtotime($edate))}}
+                                </td>
+                            </tr>
                             <thead>
                                 <tr>
                                     <th scope="col">Sl</th>
-                                    <th scope="col">Employee Details</th>
-                                    <th scope="col">Employee Data</th>
+                                    <th scope="col">Purpose</th>
+                                    <th scope="col">Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>Name</td>
-                                    <td>{{ $details['0']['user']['name'] }}</td>
+                                    <td>Student Fee</td>
+                                    <td>{{ $student_fee }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">2</th>
-                                    <td>Basic Salary</td>
-                                    <td>{{ $details['0']['user']['salary'] }}</td>
+                                    <td>Employee Salary</td>
+                                    <td>{{ $employee_salary }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">3</th>
-                                    <td>Total Absent</td>
-                                    <td>{{ $absentcount }}</td>
+                                    <td>Other Cost</td>
+                                    <td>{{ $other_cost }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">4</th>
-                                    <td>Month</td>
-                                    <td>{{ date('M-Y', strtotime($details['0']->date)) }}</td>
+                                    <td>Total Cost</td>
+                                    <td>{{ $totalcost }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">5</th>
-                                    <td>Salary This Month</td>
-                                    <td>{{ $totalsalary }}</td>
-                                </tr>
-                            </tbody>
-
-                        </table>
-                        <i style="font-size: 10px;">Print date: {{ date("d M Y") }}</i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="employee-details">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="bd-example">
-                        <table class="table table-bordered table-striped styled-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Sl</th>
-                                    <th scope="col">Employee Details</th>
-                                    <th scope="col">Employee Data</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Name</td>
-                                    <td>{{ $details['0']['user']['name'] }}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Basic Salary</td>
-                                    <td>{{ $details['0']['user']['salary'] }}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Total Absent</td>
-                                    <td>{{ $absentcount }}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>Month</td>
-                                    <td>{{ date('M-Y', strtotime($details['0']->date)) }}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>Salary This Month</td>
-                                    <td>{{ $totalsalary }}</td>
+                                    <td>Profit</td>
+                                    <td>{{ $profit }}</td>
                                 </tr>
                             </tbody>
 

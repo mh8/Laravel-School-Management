@@ -28,7 +28,7 @@
                 @endif
                 <li>
                     <a href="javaScript:void();">
-                        <i class="fa fa-slideshare"></i>Manage Profile</span><i class="feather icon-chevron-right pull-right"></i>
+                        <i class="fa fa-slideshare"></i><span>Manage Profile</span><i class="feather icon-chevron-right pull-right"></i>
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{ route('profile.view') }}">Profile</a></li>
@@ -101,6 +101,7 @@
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{ route('report.monthly.profit.view') }}">Monthly Profit</a></li>
+                        <li><a href="{{ route('report.marksheet.generate.view') }}">Marksheet Generate</a></li>
                     </ul>
                 </li>
             </ul>

@@ -31,23 +31,20 @@ class ProfitController extends Controller
         $totalcost = $other_cost + $employee_salary;
         $profit = $student_fee - $totalcost;
 
-
         $html['thsource'] = '<th>Student Fee</th>';
         $html['thsource'] .= '<th>Others</th>';
         $html['thsource'] .= '<th>Basic Salary</th>';
         $html['thsource'] .= '<th>Total Cost</th>';
         $html['thsource'] .= '<th>Profit</th>';
         $html['thsource'] .= '<th>Action</th>';
-
         $color = 'success';
-
         $html['tdsource'] = '<td>' . $student_fee . '</td>';
         $html['tdsource'] .= '<td>' . $other_cost . '</td>';
         $html['tdsource'] .= '<td>' . $employee_salary . '</td>';
         $html['tdsource'] .= '<td>' . $totalcost . '</td>';
         $html['tdsource'] .= '<td>' . $profit . '</td>';
         $html['tdsource'] .= '<td>';
-        $html['tdsource'] .= '<a class="btn btn-' . $color . '" title="Payslip" target="_blank" href="' . route("report.profit.detail.view").'?start_date='.$sdate.'?end_date='.$edate.'">Pay Slip</a>';
+        $html['tdsource'] .= '<a class="btn btn-' . $color . '" title="Payslip" target="_blank" href="' . route("report.profit.detail.view").'?start_date='.$sdate.'&end_date='.$edate.'">Pay Slip</a>';
         $html['tdsource'] .= '</td>';
         return response()->json(@$html);
     }
@@ -61,7 +58,7 @@ class ProfitController extends Controller
         $data['edate'] = date('Y-m-d', strtotime($request->end_date));
 
         $pdf = PDF::loadView('backend.report.profit.profit_detail_view', $data);
-        $pdf->setProtection(['copy', 'print'], '', 'pass');
+        $pdf->SetProtection(['copy', 'print'], '', 'pass');
         return $pdf->stream('profit_detail_view.pdf');
     }
 }

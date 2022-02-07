@@ -14,6 +14,7 @@ use App\Http\Controllers\backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Marks\GradeController;
 use App\Http\Controllers\backend\Marks\MarksController;
 use App\Http\Controllers\backend\ProfileController;
+use App\Http\Controllers\backend\Report\MarksheetController;
 use App\Http\Controllers\backend\Report\ProfitController;
 use App\Http\Controllers\backend\Setup\AssignSubjectController;
 use App\Http\Controllers\backend\Setup\DesignationController;
@@ -268,10 +269,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/profit/datewise', [ProfitController::class, 'MonthlyProfitDatewise'])->name('report.profit.datewise.get');
         Route::get('/profit/detailview', [ProfitController::class, 'MonthlyProfitDetailView'])->name('report.profit.detail.view');
 
-        // //Account Report Routes
-        // Route::get('account/view', [AccountReportController::class, 'AccountReportView'])->name('account.report.view');
-        // Route::get('account/get', [AccountReportController::class, 'AccountReportGet'])->name('account.report.get');
-        // Route::get('account/details/{id}', [AccountReportController::class, 'AccountReportDetails'])->name('account.report.details');
+        //Marksheet Generate Routes
+        Route::get('marksheet/generate/view', [MarksheetController::class, 'MarksheetGenerateView'])->name('report.marksheet.generate.view');
+        Route::get('/marksheet/getstudents', [MarksheetController::class, 'MarksheetGetStudents'])->name('report.marksheet.getstudents');
+
     });
 
 
