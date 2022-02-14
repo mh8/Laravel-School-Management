@@ -50,7 +50,7 @@ Student Marks Entry
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="id_no"><strong>ID No</strong> </label>
-                                <input type="text" id="id_no" class="form-control">
+                                <input type="text" name="id_no" id="id_no" class="form-control">
                             </div>
                             <div class="form-group col-md-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>

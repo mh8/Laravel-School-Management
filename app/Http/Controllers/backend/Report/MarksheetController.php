@@ -15,7 +15,6 @@ use Illuminate\Http\Request;
 class MarksheetController extends Controller
 {
     //
-
     public function MarksheetGenerateView()
     {
         $data['years'] = StudentYear::orderBy('id', 'desc')->get();
@@ -34,10 +33,12 @@ class MarksheetController extends Controller
         $id_no = $request->id_no;
 
         $count_fail = StudentMarks::where('year_id', $year_id)->where('class_id', $class_id)->where('exam_type_id', $exam_type_id)->where('id_no', $id_no)->where('marks', '<', '33')->get()->count();
+
         $student_single = StudentMarks::where('year_id', $year_id)->where('class_id', $class_id)->where('exam_type_id', $exam_type_id)->where('id_no', $id_no)->first();
 
-        if ($student_single) {
+        if ($student_single == true) {
             $allMarks = StudentMarks::with(['assign_subject', 'year'])->where('year_id', $year_id)->where('class_id', $class_id)->where('exam_type_id', $exam_type_id)->where('id_no', $id_no)->get();
+            // dd($allMarks->toArray());
             $allGrades = MarksGrade::all();
             return view('backend.report.marksheet.marksheet_pdf', compact('allMarks', 'allGrades', 'count_fail'));
         }else{
