@@ -14,8 +14,10 @@ use App\Http\Controllers\backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Marks\GradeController;
 use App\Http\Controllers\backend\Marks\MarksController;
 use App\Http\Controllers\backend\ProfileController;
+use App\Http\Controllers\backend\Report\AttendanceReportController;
 use App\Http\Controllers\backend\Report\MarksheetController;
 use App\Http\Controllers\backend\Report\ProfitController;
+use App\Http\Controllers\backend\Report\ResultReportController;
 use App\Http\Controllers\backend\Setup\AssignSubjectController;
 use App\Http\Controllers\backend\Setup\DesignationController;
 use App\Http\Controllers\backend\Setup\ExamTypeController;
@@ -272,6 +274,14 @@ Route::group(['middleware' => 'auth'], function () {
         //Marksheet Generate Routes
         Route::get('marksheet/generate/view', [MarksheetController::class, 'MarksheetGenerateView'])->name('report.marksheet.generate.view');
         Route::get('/marksheet/getstudents', [MarksheetController::class, 'MarksheetGetStudents'])->name('report.marksheet.getstudents');
+
+        //Attendance Report Routes
+        Route::get('attendance/view', [AttendanceReportController::class, 'AttendanceView'])->name('report.attendance.view');
+        Route::get('/attendance/getemployee', [AttendanceReportController::class, 'AttendanceGetEmployee'])->name('report.attendance.getemployee');
+
+        //Student Result Report Routes
+        Route::get('student/result/view', [ResultReportController::class, 'StudentResultView'])->name('report.student.result.view');
+        Route::get('result/get', [ResultReportController::class, 'ResultGet'])->name('report.result.get');
 
     });
 

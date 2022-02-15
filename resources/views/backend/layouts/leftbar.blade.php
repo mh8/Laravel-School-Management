@@ -102,6 +102,8 @@
                     <ul class="vertical-submenu">
                         <li><a href="{{ route('report.monthly.profit.view') }}">Monthly Profit</a></li>
                         <li><a href="{{ route('report.marksheet.generate.view') }}">Marksheet Generate</a></li>
+                        <li><a href="{{ route('report.attendance.view') }}">Attendance Report</a></li>
+                        <li><a href="{{ route('report.student.result.view') }}">Student Result</a></li>
                     </ul>
                 </li>
             </ul>

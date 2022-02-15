@@ -19,7 +19,7 @@ Student Marks Entry
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-2 text-center">
+                        <div class="col-md-4 text-center">
                             Your School Logo
                         </div>
                         <div class="col-md-6">
@@ -180,11 +180,20 @@ Student Marks Entry
                             </table>
                         </div>
                     </div>
-                    <br>
+                    <br><br><br>
                     <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <hr style="border: solid 1px; margin-bottom: -2px">
+                            <div class="text-center">Teacher</div>
+                        </div>
+                        <div class="col-md-4">
+                            <hr style="border: solid 1px; margin-bottom: -2px">
+                            <div class="text-center">Parents</div>
+                        </div>
+                        <div class="col-md-4">
+                            <hr style="border: solid 1px; margin-bottom: -2px">
+                            <div class="text-center">Principal</div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -33624,7 +33624,7 @@ input[type=range]:focus {
   padding: 0.7rem;
 }
 .table td {
-  color: #8A98AC;
+  color: #000000;
   vertical-align: middle;
   border-top: 1px solid rgba(0, 0, 0, 0.03);
   padding: 0.6rem;
