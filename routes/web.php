@@ -18,6 +18,7 @@ use App\Http\Controllers\backend\Report\AttendanceReportController;
 use App\Http\Controllers\backend\Report\MarksheetController;
 use App\Http\Controllers\backend\Report\ProfitController;
 use App\Http\Controllers\backend\Report\ResultReportController;
+use App\Http\Controllers\backend\Report\StudentIdCardController;
 use App\Http\Controllers\backend\Setup\AssignSubjectController;
 use App\Http\Controllers\backend\Setup\DesignationController;
 use App\Http\Controllers\backend\Setup\ExamTypeController;
@@ -282,6 +283,11 @@ Route::group(['middleware' => 'auth'], function () {
         //Student Result Report Routes
         Route::get('student/result/view', [ResultReportController::class, 'StudentResultView'])->name('report.student.result.view');
         Route::get('result/get', [ResultReportController::class, 'ResultGet'])->name('report.result.get');
+
+        //Student ID Card Routes
+        Route::get('student/idcard/view', [StudentIdCardController::class, 'StudentIdCardView'])->name('report.student.idcard.view');
+        Route::get('/idcard/getstudents', [StudentIdCardController::class, 'StudentIdCardGetStudents'])->name('report.idcard.getstudents');
+        Route::get('/idcard/pdf/{id}', [StudentIdCardController::class, 'StudentIdCardPdf'])->name('report.idcard.pdf');
 
     });
 

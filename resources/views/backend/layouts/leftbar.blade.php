@@ -104,6 +104,7 @@
                         <li><a href="{{ route('report.marksheet.generate.view') }}">Marksheet Generate</a></li>
                         <li><a href="{{ route('report.attendance.view') }}">Attendance Report</a></li>
                         <li><a href="{{ route('report.student.result.view') }}">Student Result</a></li>
+                        <li><a href="{{ route('report.student.idcard.view') }}">Student ID Card</a></li>
                     </ul>
                 </li>
             </ul>
