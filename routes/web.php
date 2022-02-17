@@ -287,6 +287,7 @@ Route::group(['middleware' => 'auth'], function () {
         //Student ID Card Routes
         Route::get('student/idcard/view', [StudentIdCardController::class, 'StudentIdCardView'])->name('report.student.idcard.view');
         Route::get('/idcard/getstudents', [StudentIdCardController::class, 'StudentIdCardGetStudents'])->name('report.idcard.getstudents');
+
         Route::get('/idcard/pdf/{id}', [StudentIdCardController::class, 'StudentIdCardPdf'])->name('report.idcard.pdf');
 
     });

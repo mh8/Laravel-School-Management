@@ -91,6 +91,7 @@ Student Result Report
                     '<tbody>';
                 if (data != '') {
                     $.each(data, function(key, value) {
+                        var id = value.student.id;
                         html += '<tr>' +
                             '<td>' + sl++ + '</td>' +
                             '<td>' + value.student.id_no + '</td>' +
@@ -98,7 +99,7 @@ Student Result Report
                             '<td>' + value.student_class.name + '</td>' +
                             '<td>' + value.roll + '</td>' +
                             '<td>' +
-                            '<a href="{{ route('report.idcard.pdf', '+ value.student.id +') }}" class="btn btn-rounded btn-outline-info mt-3 ml-5 p-3">Print</a>' +
+                            '<a href="/report/idcard/pdf/'+id+'" class="btn btn-rounded btn-outline-info mt-3 ml-5 p-3" target="_blank">Print</a>' +
                             '</td>' +
                             // '<td><a href="{{ route("report.idcard.pdf",'+ value.student.id_no +') }}" class="btn btn-rounded btn-outline-info mt-3 ml-5 p-3">ID Card</a></td>' +
                             //&year_id=' + year_id + '&class_id=' + class_id + '

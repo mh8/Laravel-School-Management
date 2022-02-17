@@ -53,7 +53,7 @@ class StudentIdCardController extends Controller
 
     public function StudentIdCardPdf(Request $request,$id)
     {
-        $data['allData'] = AssignStudent::find($id);
+        $data['allData'] = AssignStudent::where('student_id', $request->id)->first();
         // dd($data['allData']);
         $pdf = PDF::loadView('backend.report.student_id_card.student_id_card_pdf', $data);
         $pdf->SetProtection(['copy', 'print'], '', 'pass');
